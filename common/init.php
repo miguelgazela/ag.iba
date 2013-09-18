@@ -2,8 +2,7 @@
     // This file is included in every page
 
     // Define some base paths
-    $BASE_PATH = '/opt/lbaw/lbaw12201/public_html/rogo/';
-    $BASE_URL = 'http://gnomo.fe.up.pt/~lbaw12201/rogo/';
+    $BASE_URL = 'http://paginas.fe.up.pt/~ei10076/agiva-3.0/';
 
     require_once('database.php');
     require_once('session.php');
@@ -14,8 +13,8 @@
             throw new Exception("returnErrorJSON: invalid number of arguments");
         }
         $response = func_get_arg(0);
-        $response['errorCode'] = func_get_arg(1);
-        $response['errorMessage'] = func_get_arg(2);
+        $response['error_code'] = func_get_arg(1);
+        $response['error_message'] = func_get_arg(2);
         if(func_num_args() == 4) {
             $response['errors'] = func_get_arg(3);
         }
@@ -27,8 +26,8 @@
             throw new Exception("returnErrorJSON: invalid number of arguments");
         }
         $response = func_get_arg(0);
-        $response['errorCode'] = -1;
-        $response['errorMessage'] = func_get_arg(1);
+        $response['error_code'] = -1;
+        $response['error_message'] = func_get_arg(1);
 
         if(func_num_args() == 3) {
             $response['data'] = func_get_arg(2);
@@ -37,21 +36,12 @@
     }
 
     function returnIfHasErrors($errors, $url) {
-        global $BASE_URL;
+        //global $BASE_URL;
         if($errors->hasErrors()) {
             $_SESSION['s_error'] = $errors->getErrors();
             $_SESSION['s_values'] = $_POST;
             header("Location: $BASE_URL".$url);
             exit;
-        }
-    }
-
-    function getSmallerText($text, $n) {
-
-        if(strlen($text) <= $n) {
-            return $text;
-        } else {
-            return (substr($text, 0, $n)."...");
         }
     }
 

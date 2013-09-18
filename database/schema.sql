@@ -27,7 +27,7 @@ create table impostos (
 	modelo text,
 	matricula text,
 	data_matricula date,
-	data_pagamento date,
+	data_pagamento date
 );
 
 create table actividades (

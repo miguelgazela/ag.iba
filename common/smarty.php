@@ -1,9 +1,10 @@
 <?php
     // Setup Smarty
-    include_once($BASE_PATH . 'libs/Smarty/Smarty.class.php');
+    include_once('../libs/Smarty/Smarty.class.php');
     $smarty = new Smarty;
-    $smarty->setTemplateDir($BASE_PATH . "templates/");    
-    $smarty->setCompileDir($BASE_PATH . "templates_c/");
+
+    $smarty->setTemplateDir("../templates/");    
+    $smarty->setCompileDir($BASE_PATH . "../templates_c/");
 
     // Send some common variables to Smarty
     $smarty->assign("BASE_URL", $BASE_URL);
