@@ -4,9 +4,35 @@
    Author's custom styles
    ========================================================================== */
 
+/* Main color: #79c25c secondary color: #dcef73; */
 
 body {
-  padding-top: 70px;
+    background: #FAFAFA;
+    padding-top: 70px;
+}
+
+/*
+.navbar-default {
+    background-color: #79c25c;
+    border-color: #dcef73;
+}
+*/
+
+.navbar-default {
+    background-color: #2f789b;
+    border-color: white;
+}
+
+.badge-danger {
+    background: #d9534f;
+}
+
+.badge-warning {
+    background: #f0ad4e;
+}
+
+.badge-success {
+    background: #5cb85c;
 }
 
 

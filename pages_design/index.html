@@ -11,10 +11,10 @@
     <title>Agiva</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/main.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -60,6 +60,9 @@
                 <li><a href="#">pesquisar imposto</a></li>
               </ul>
             </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <p class="navbar-text">Signed in as Mark Otto</p>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opções <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -67,9 +70,6 @@
                 <li><a href="#">reportar erro</a></li>
               </ul>
             </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <p class="navbar-text">Signed in as Mark Otto</p>
             <li><a href="#bug">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -79,8 +79,49 @@
     <div class="container">
 
       <div class="row">
-        <div class="col-md-8">.col-md-8</div>
-        <div class="col-md-4">.col-md-4</div>
+        <div class="col-md-9">
+          <div class="table-responsive">
+            <table class="table table-hover table-condensed">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Cliente</th>
+                  <th>Viatura</th>
+                  <th>Matrícula</th>
+                  <th>Data limite</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Manuel Lda</td>
+                  <td>BMW 320d</td>
+                  <td>14-74-SL</td>
+                  <td>31/10/2013 <span class="badge badge-danger">23</span></td>
+                  <td><button type="button" class="btn btn-danger btn-xs">acções</button></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Vitor Oliveira</td>
+                  <td>Opel Astra</td>
+                  <td>77-CJ-84</td>
+                  <td>30/11/2013 <span class="badge badge-warning">45</span></td>
+                  <td><button type="button" class="btn btn-warning btn-xs">acções</button></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>António Ferreira</td>
+                  <td>Audi A3</td>
+                  <td>08-66-VS</td>
+                  <td>30/11/2013 <span class="badge badge-success">90</span></td>
+                  <td><button type="button" class="btn btn-success btn-xs">acções</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-3">.col-md-4</div>
       </div>
 
     </div> <!-- /container -->
@@ -89,8 +130,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/modernizr.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/modernizr.min.js"></script>
   </body>
 </html>
