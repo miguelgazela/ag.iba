@@ -7,20 +7,47 @@
 /* Main color: #79c25c secondary color: #dcef73; */
 
 body {
-    background: #FAFAFA;
+    background: #fff;
     padding-top: 70px;
 }
 
-/*
-.navbar-default {
-    background-color: #79c25c;
-    border-color: #dcef73;
+body > .container {
+    margin-top: 20px;
 }
-*/
+
+
+/* =============================================================
+   navbar custom styles
+   ============================================================= */
+
 
 .navbar-default {
-    background-color: #2f789b;
-    border-color: white;
+    background-color: #428bca;
+    border-color: #71b0e4;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav>li>a {
+    color: white;
+}
+
+.navbar-default .navbar-nav>.dropdown>a .caret {
+    border-top-color: white;
+    border-bottom-color: white;
+}
+
+.navbar-default .navbar-nav>.open>a, 
+.navbar-default .navbar-nav>.open>a:hover, 
+.navbar-default .navbar-nav>.open>a:focus {
+    
+}
+
+/* =============================================================
+   others custom styles
+   ============================================================= */
+
+.table thead>tr>th {
+    border-bottom: 1px solid #428bca;
 }
 
 .badge-danger {
