@@ -26,6 +26,27 @@ body > .container {
     border-color: #71b0e4;
 }
 
+/* changing navbar height --> */
+
+.navbar {
+  min-height: 60px;
+}
+
+.navbar-default .navbar-nav>li>a {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-right: 5px;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color: #155183;
+  margin-top: 5px;
+  border-top: 6px solid white;
+  padding-top: 9px;
+}
+
+/* <-- changing navbar height */
+
 .navbar-default .navbar-brand,
 .navbar-default .navbar-nav>li>a {
     color: white;
@@ -36,11 +57,29 @@ body > .container {
     border-bottom-color: white;
 }
 
-.navbar-default .navbar-nav>.open>a, 
-.navbar-default .navbar-nav>.open>a:hover, 
-.navbar-default .navbar-nav>.open>a:focus {
-    
+.navbar-brand {
+  font-size: 30px;
+  line-height: 30px;
+  padding: 15px 15px;
 }
+
+/* Change the docs' brand */
+.navbar-default .navbar-brand {
+  font-weight: bold;
+  color: #155183;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+  -webkit-transition: all .2s linear;
+     -moz-transition: all .2s linear;
+          transition: all .2s linear;
+}
+
+.navbar-default .navbar-brand:hover {
+  text-decoration: none;
+  color: white;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
+}
+
+
 
 /* =============================================================
    others custom styles

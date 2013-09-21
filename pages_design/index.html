@@ -39,11 +39,11 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clientes <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Clientes <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">ver clientes</a></li>
-                <li><a href="#">adicionar cliente</a></li>
-                <li><a href="#">pesquisar clientes</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-list"></span> ver clientes</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-plus"></span> adicionar cliente</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-search"></span> pesquisar clientes</a></li>
                 <!--
                 <li class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
@@ -53,23 +53,24 @@
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Impostos <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-road"></span> Impostos <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">ver impostos</a></li>
-                <li><a href="#">adicionar imposto</a></li>
-                <li><a href="#">pesquisar imposto</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-list"></span> ver impostos</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-plus"></span> adicionar imposto</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-search"></span> pesquisar imposto</a></li>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opções <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Opções <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">alterar password</a></li>
-                <li><a href="#">reportar erro</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-lock"></span> alterar password</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-warning-sign"></span> reportar erro</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-comment"></span> enviar sugestão</a></li>
               </ul>
             </li>
-            <li><a href="#bug">Logout</a></li>
+            <li><a href="#bug"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -92,13 +93,26 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr class="danger">
                   <td>1</td>
                   <td>Manuel Lda</td>
                   <td>BMW 320d</td>
                   <td>14-74-SL</td>
                   <td>31/10/2013 <span class="badge badge-danger">23</span></td>
-                  <td><button type="button" class="btn btn-danger btn-xs">acções</button></td>
+                  <td>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown">
+                        acção <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                      </ul>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <td>2</td>
@@ -106,7 +120,20 @@
                   <td>Opel Astra</td>
                   <td>77-CJ-84</td>
                   <td>30/11/2013 <span class="badge badge-warning">45</span></td>
-                  <td><button type="button" class="btn btn-warning btn-xs">acções</button></td>
+                  <td>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-warning btn-xs dropdown-toggle" data-toggle="dropdown">
+                        acção <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                      </ul>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <td>3</td>
@@ -114,7 +141,20 @@
                   <td>Audi A3</td>
                   <td>08-66-VS</td>
                   <td>30/11/2013 <span class="badge badge-success">90</span></td>
-                  <td><button type="button" class="btn btn-success btn-xs">acções</button></td>
+                  <td>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-success btn-xs dropdown-toggle" data-toggle="dropdown">
+                        acção <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                      </ul>
+                    </div>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -124,7 +164,7 @@
         <div class="col-md-3">
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h3 class="panel-title">Actividade recente</h3>
+              <h3 class="panel-title"><span class="glyphicon glyphicon-time"></span> Actividade recente</h3>
             </div>
             <ul class="list-group">
               <li class="list-group-item">
