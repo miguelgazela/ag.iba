@@ -8,7 +8,7 @@
 
 body {
     background: #fff;
-    padding-top: 70px;
+    padding-top: 80px;
 }
 
 body > .container {
@@ -22,8 +22,8 @@ body > .container {
 
 
 .navbar-default {
-    background-color: #428bca;
-    border-color: #71b0e4;
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(115, 115, 115, 0.2)
 }
 
 /* changing navbar height --> */
@@ -34,59 +34,86 @@ body > .container {
 
 .navbar-default .navbar-nav>li>a {
   padding-top: 20px;
-  padding-bottom: 20px;
-  margin-right: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
 }
 
-.navbar-default .navbar-nav>li>a:hover {
-  color: #155183;
-  margin-top: 5px;
-  border-top: 6px solid white;
-  padding-top: 9px;
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+  color: #3acf93;
+  margin-bottom: 14px; /* compensate for the border */
+  border-bottom: 1px solid #3acf93;
+}
+
+.navbar-default .navbar-nav>.open>a, 
+.navbar-default .navbar-nav>.open>a:hover, 
+.navbar-default .navbar-nav>.open>a:focus {
+  margin-bottom: 0; /* compensate for the border */
+  border-bottom: 0;
 }
 
 /* <-- changing navbar height */
 
 .navbar-default .navbar-brand,
 .navbar-default .navbar-nav>li>a {
-    color: white;
-}
-
-.navbar-default .navbar-nav>.dropdown>a .caret {
-    border-top-color: white;
-    border-bottom-color: white;
-}
-
-.navbar-brand {
-  font-size: 30px;
-  line-height: 30px;
-  padding: 15px 15px;
+    color: #737373;
 }
 
 /* Change the docs' brand */
 .navbar-default .navbar-brand {
   font-weight: bold;
-  color: #155183;
+  color: #3acf93;
   text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
-  -webkit-transition: all .2s linear;
-     -moz-transition: all .2s linear;
-          transition: all .2s linear;
+  font-size: 30px;
+  line-height: 30px;
+  padding: 15px 15px 15px 15px;
+  margin-right: 20px;
+  background-color: rgba(115, 115, 115, 0.2);
+  -webkit-transition: all .3s linear;
+     -moz-transition: all .3s linear;
+          transition: all .3s linear;
 }
 
 .navbar-default .navbar-brand:hover {
   text-decoration: none;
-  color: white;
+  color: #8dee43;
   text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
 }
 
+.navbar-default .navbar-nav>.dropdown>a .caret,
+.navbar-default .navbar-nav>.dropdown>a:focus .caret,
+.navbar-default .navbar-nav>.dropdown>a:hover .caret {
+  border-top-color: #3acf93;
+  border-bottom-color: #3acf93;
+}
 
+.dropdown-menu {
+  border-top: 1px solid #3acf93
+}
+
+.navbar-default .navbar-nav>.open>a, 
+.navbar-default .navbar-nav>.open>a:hover, 
+.navbar-default .navbar-nav>.open>a:focus {
+  color: #3acf93;
+  background-color: white;
+}
+
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #3acf93;
+}
+
+.navbar-default .navbar-nav>li>a {
+  margin-bottom: 0px;
+}
 
 /* =============================================================
    others custom styles
    ============================================================= */
 
 .table thead>tr>th {
-    border-bottom: 1px solid #428bca;
+    border-bottom: 1px solid #3acf93;
 }
 
 .badge-danger {
