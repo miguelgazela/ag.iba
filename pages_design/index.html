@@ -83,10 +83,11 @@
                   <th>Matrícula</th>
                   <th>Data limite</th>
                   <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="danger">
+                <tr>
                   <td>1</td>
                   <td>Manuel Lda</td>
                   <td>BMW 320d</td>
@@ -106,8 +107,11 @@
                       </ul>
                     </div>
                   </td>
+                  <td>
+                    <input type="checkbox" value="">
+                  </td>
                 </tr>
-                <tr class="danger">
+                <tr>
                   <td>2</td>
                   <td>Catarina Neves</td>
                   <td>BMW 320d</td>
@@ -126,6 +130,9 @@
                         <li><a href="#">Separated link</a></li>
                       </ul>
                     </div>
+                  </td>
+                  <td>
+                    <input type="checkbox" value="">
                   </td>
                 </tr>
                 <tr>
@@ -148,6 +155,9 @@
                       </ul>
                     </div>
                   </td>
+                  <td>
+                    <input type="checkbox" value="">
+                  </td>
                 </tr>
                 <tr>
                   <td>3</td>
@@ -169,40 +179,61 @@
                       </ul>
                     </div>
                   </td>
+                  <td>
+                    <input type="checkbox" value="">
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
 
-        <div class="col-md-3">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title"><span class="glyphicon glyphicon-time"></span> Actividade recente</h3>
+        <div class="col-md-3 sidebar">
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputEmail2">Search</label>
+              <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Search">
             </div>
-            <ul class="list-group">
-              <li class="list-group-item">
-                <span class="badge">há 17m</span>
-                <h5 class="list-group-item-heading">miguelgazela</h5>
-                <p class="list-group-item-text">Adiantou data limite de 77-CJ-84</p>
-              </li>
-              <li class="list-group-item">
-                <span class="badge">há 4h</span>
-                <h5 class="list-group-item-heading">vmcnoliveira</h5>
-                <p class="list-group-item-text">Atrasou data limite de 14-74-SL</p>
-              </li>
-              <li class="list-group-item">
-                <span class="badge">há 2d</span>
-                <h5 class="list-group-item-heading">List group item heading</h5>
-                <p class="list-group-item-text">Eliminou imposto de 08-66-VS</p>
-              </li>
-              <li class="list-group-item">
-                <span class="badge">há 1sem</span>
-                <h5 class="list-group-item-heading">List group item heading</h5>
-                <p class="list-group-item-text">texto aqui e tal</p>
-              </li>
+            <button type="submit" class="btn btn-default">Search</button>
+          </form>
+          <hr>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle btn-sidebar" data-toggle="dropdown">
+              Aplicar a seleccionados <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
             </ul>
           </div>
+          <button type="button" class="btn btn-success btn-sidebar">Adicionar imposto</button>
+          <hr>
+          <h4>Actividade recente</h4>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <span class="badge">há 17m</span>
+              <h5 class="list-group-item-heading">miguelgazela</h5>
+              <p class="list-group-item-text">Adiantou data limite de 77-CJ-84</p>
+            </li>
+            <li class="list-group-item">
+              <span class="badge">há 4h</span>
+              <h5 class="list-group-item-heading">vmcnoliveira</h5>
+              <p class="list-group-item-text">Atrasou data limite de 14-74-SL</p>
+            </li>
+            <li class="list-group-item">
+              <span class="badge">há 2d</span>
+              <h5 class="list-group-item-heading">List group item heading</h5>
+              <p class="list-group-item-text">Eliminou imposto de 08-66-VS</p>
+            </li>
+            <li class="list-group-item">
+              <span class="badge">há 1sem</span>
+              <h5 class="list-group-item-heading">List group item heading</h5>
+              <p class="list-group-item-text">texto aqui e tal</p>
+            </li>
+          </ul>
         </div>
       </div>
 

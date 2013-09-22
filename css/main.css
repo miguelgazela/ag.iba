@@ -88,7 +88,8 @@ body > .container {
 }
 
 .dropdown-menu {
-  border-top: 1px solid #3acf93
+  border-top: 1px solid #3acf93;
+  border-radius: 0;
 }
 
 .navbar-default .navbar-nav>.open>a, 
@@ -109,11 +110,74 @@ body > .container {
 }
 
 /* =============================================================
+   sidebar custom styles
+   ============================================================= */
+
+.list-group-item:first-child {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.list-group-item:last-child {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.list-group-item {
+  border: 1px solid rgba(115, 115, 115, 0.2);
+  padding: 6px 12px;
+}
+
+.sidebar .btn-group {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.btn-default:hover, 
+.btn-default:focus, 
+.btn-default:active, 
+.btn-default.active, 
+.open .dropdown-toggle.btn-default {
+  color: #3acf93;
+  background-color: white;
+  border-color: #3acf93;
+}
+
+.sidebar .dropdown-menu {
+  width: 100%;
+}
+
+.btn-sidebar {
+  width: 100%;
+  border-radius: 0;
+}
+
+
+
+/* =============================================================
    others custom styles
    ============================================================= */
 
 .table thead>tr>th {
     border-bottom: 1px solid #3acf93;
+}
+
+hr {
+  border-top: 1px solid rgba(115, 115, 115, 0.2);
+}
+
+.btn-default {
+  color: #737373;
+  border-color: #737373;
+}
+
+.btn-default .caret {
+  border-top-color: #737373;
+}
+
+.btn-default:hover .caret,
+.btn-default:focus .caret {
+  border-top-color: #737373;
 }
 
 .badge-danger {
