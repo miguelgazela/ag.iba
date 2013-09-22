@@ -16,6 +16,44 @@
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
 
+    <style>
+
+      html, body {
+        height: 100%;
+        min-height: 100%;
+      }
+
+      .container {
+        height: 100%;
+        min-height: 100%;
+      }
+
+      .row {
+        height: 100%;
+        min-height: 100%;
+      }
+
+      .col-md-4 {
+        background-color: #3acf93;
+        height: 100%;
+        min-height: 100%;
+        padding-top: 20px;
+      }
+
+      .login-heading {
+        color: white;
+        margin-bottom: 30px;
+      }
+
+      .login .form-control {
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border: 0;
+      }
+
+    </style>
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="../../assets/js/html5shiv.js"></script>
@@ -24,21 +62,24 @@
   </head>
 
   <body>
-
-    <div class="container">
-
-      <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="form-control" placeholder="Email address" autofocus>
-        <input type="password" class="form-control" placeholder="Password">
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
-
+    <div class="container login">
+      <div class="row">
+        <div class="col-md-4">
+          <h1 class="login-heading">Ag.iba</h1>
+          <form role="form">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+        </div>
+      </div>
     </div> <!-- /container -->
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
