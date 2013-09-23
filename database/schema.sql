@@ -36,5 +36,6 @@ create table actividades (
 	id_cliente references clientes(id_cliente),
 	id_imposto references impostos(id_imposto),
 	tipo integer,
+	descricao text,
 	data_alteracao date
 );
