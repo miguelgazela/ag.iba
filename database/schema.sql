@@ -17,7 +17,8 @@ create table clientes (
 	cidade text,
 	freguesia text,
 	cod_postal text,
-	nif text
+	nif text,
+	tipo integer
 );
 
 create table impostos (
@@ -27,7 +28,8 @@ create table impostos (
 	modelo text,
 	matricula text,
 	data_matricula date,
-	data_pagamento date
+	data_pagamento date,
+	tipo integer
 );
 
 create table actividades (
