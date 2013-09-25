@@ -18,41 +18,9 @@
 
     <style>
 
-      html {
-        height: 80%;
-        min-height: 80%;
-      }
-
-      body {
-        height: 100%;
-        min-height: 100%;
-        margin-top: 10%;
-      }
-
-      .container {
-        height: 100%;
-        min-height: 100%;
-        width: 100%;
-        max-width: none;
-      }
-
-      .row {
-        height: 100%;
-        min-height: 100%;
-        background-color: #3acf93;
-      }
-
-      .login-heading {
-        color: white;
-        margin-bottom: 30px;
-      }
-
-      .login .form-control {
-        border-radius: 0;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        border: 0;
-      }
+    html, body {
+      background-color: #3acf93;
+    }
 
     </style>
 
@@ -64,38 +32,47 @@
   </head>
 
   <body>
-    <div class="container login">
-      <div class="row">
-        <div class="col-md-6">
-          <h1 class="login-heading">Ag.iba</h1>
-          <form role="form">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+    <div class="container">
+      <div class="jumbotron">
+        <div class="container">
+          <h1>Ag.iba</h1>
+          <div class="row">
+            <div class="col-md-6">
+              Login em conta existente
+              <form role="form">
+                <div class="form-group">
+                  <label for="input_username">Username</label>
+                  <input type="text" class="form-control" id="input_username" placeholder="username">
+                </div>
+                <div class="form-group">
+                  <label for="input_password">Password</label>
+                  <input type="password" class="form-control" id="input_password" placeholder="password">
+                </div>
+                <button type="submit" class="btn btn-default">Login</button>
+              </form>
             </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <div class="col-md-6">
+              Criar uma nova conta
+              <form role="form">
+                <div class="form-group">
+                  <label for="input_username">Username</label>
+                  <input type="text" class="form-control" id="input_username" placeholder="username">
+                </div>
+                <div class="form-group">
+                  <label for="input_password_2">Password</label>
+                  <input type="password" class="form-control" id="input_password_2" placeholder="password">
+                </div>
+                <div class="form-group">
+                  <label for="input_password_3">Confirmar Password</label>
+                  <input type="password" class="form-control" id="input_password_3" placeholder="confirmar password">
+                </div>
+                <button type="submit" class="btn btn-default">Criar</button>
+              </form>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
-        </div>
-        <div class="col-md-6">
-          <h1 class="login-heading">Ag.iba</h1>
-          <form role="form">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
+          </div>
         </div>
       </div>
-    </div> <!-- /container -->
+    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

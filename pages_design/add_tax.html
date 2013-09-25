@@ -14,8 +14,8 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../css/main.css" rel="stylesheet">
     <link href="../css/datepicker.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -75,6 +75,21 @@
         <h3>Adicionar novo imposto</h3>
           <form class="form-horizontal" role="form">
             <div class="form-group">
+              <label class="col-lg-2 control-label" for="input_client">Cliente</label>
+              <div class="col-lg-6">
+                <select class="form-control">
+                  <option value="4">A.Augusto Magalhães - Serviços Médicos</option>
+                  <option value="3">Adília Salgueiro - Imobiliária,Lda</option>
+                  <option value="4">A.Augusto Magalhães - Serviços Médicos</option>
+                  <option value="3">Adília Salgueiro - Imobiliária,Lda</option>
+                  <option value="4">A.Augusto Magalhães - Serviços Médicos</option>
+                  <option value="3">Adília Salgueiro - Imobiliária,Lda</option>
+                  <option value="4">A.Augusto Magalhães - Serviços Médicos</option>
+                  <option value="3">Adília Salgueiro - Imobiliária,Lda</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
               <label for="input_brand" class="col-lg-2 control-label">Marca</label>
               <div class="col-lg-6">
                 <input type="text" class="form-control" id="input_brand" placeholder="marca">
@@ -98,27 +113,20 @@
             <div class="form-group">
               <label for="input_plate_date" class="col-lg-2 control-label">Data Matrícula</label>
               <div class="col-lg-6">
-                <input type="text" class="form-control" value="02/16/12" data-date-format="dd/mm/yyyy" id="dp2" placeholder="dd/mm/yyyy">
+                <input type="text" class="form-control" data-date-format="dd/mm/yyyy" id="input_plate_date" placeholder="dd/mm/yyyy">
                 <span class="help-block hide">A block of help text that breaks onto a new line and may extend beyond one line.</span>
               </div>
             </div>
             <div class="form-group">
-              <label for="input_postal" class="col-lg-2 control-label">Código-Postal</label>
+              <label for="input_due_date" class="col-lg-2 control-label">Data Limite</label>
               <div class="col-lg-6">
-                <input type="text" class="form-control" id="input_postal" placeholder="código postal">
-                <span class="help-block hide">A block of help text that breaks onto a new line and may extend beyond one line.</span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="input_nif" class="col-lg-2 control-label">NIF/NIPC</label>
-              <div class="col-lg-6">
-                <input type="text" class="form-control" id="input_nif" placeholder="nif/nipc">
+                <input type="text" class="form-control" id="input_due_date" placeholder="dd/mm/yyyy">
                 <span class="help-block hide">A block of help text that breaks onto a new line and may extend beyond one line.</span>
               </div>
             </div>
             <div class="form-group">
               <div class="col-lg-offset-2 col-lg-6">
-                <button type="submit" class="btn btn-default">Gravar cliente</button>
+                <button type="submit" class="btn btn-default">Gravar imposto</button>
               </div>
             </div>
           </form>
@@ -136,13 +144,5 @@
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/modernizr.min.js"></script>
     <script src="../js/bootstrap-datepicker.js"></script>
-
-    <script>
-      $(function(){
-         $('.datepicker').datepicker({
-            format: 'mm-dd-yyyy'
-          });
-      });
-    </script>
   </body>
 </html>

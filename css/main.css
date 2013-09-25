@@ -293,6 +293,15 @@ hr {
     background: #5cb85c;
 }
 
+.datepicker {
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+.datepicker.dropdown-menu {
+  border-top: 1px solid #ccc;
+}
+
 
 
 
