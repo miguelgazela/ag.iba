@@ -5,9 +5,6 @@
     // include needed database functions
     include_once($BASE_PATH.'database/taxes.php');
 
-    //$_SESSION['s_username'] = "remove_this";
-    //$_SESSION['s_permission'] = 3;
-
     if(isset($_SESSION['s_username'])) {
 
         // 1 -> Escritorio, 2 -> Casa

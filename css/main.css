@@ -65,8 +65,8 @@ a:focus {
 
 
 /* navigation bar current page */
-body._clients .nav > li._clients a,
-body._taxes .nav > li._taxes a {
+body._clients .nav > li._clients > a,
+body._taxes .nav > li._taxes > a {
   color: #3acf93;
   margin-bottom: 14px;
   border-bottom: 1px solid #3acf93;
