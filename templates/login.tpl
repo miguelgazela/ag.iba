@@ -4,6 +4,9 @@
   {include file="header.tpl" title="Ag.iba - Signin or Signup"}
 
   <body>
+      {if $s_error.message != ""}
+      <p>{$s_error.message}</p>
+      {/if}
       <div class="jumbotron">
         <div class="container">
           <h1><strong>Ag.iba</strong></h1>
@@ -24,18 +27,45 @@
             </div>
             <div class="col-md-6">
               <p>Criar uma nova conta</p>
-              <form role="form">
+              <form role="form" id="signup_form" action="{$BASE_URL}actions/auth/signup.php" method="post">
+                {if $s_error.username == ""}
                 <div class="form-group">
-                  <input type="text" data-placement="bottom" rel="tooltip" data-original-title="Mínimo 4 caracteres, sem espaços, pode conter . e _" class="form-control" id="input_username_2" placeholder="username" onblur="validateNewUsername()">
+                {else}
+                <div class="form-group has-error">
+                {/if}
+                  <input type="text" data-placement="bottom" rel="tooltip" data-original-title="Mínimo 4 caracteres, sem espaços, pode conter . e _" class="form-control" id="input_username_2" placeholder="username" name="username" onblur="validateNewUsername()" value="{$s_values.username}">
+                  {if $s_error.username == "no_username" || $s_error.username == "invalid"}
+                  <span class="help-block">Username inválido.</span>
+                  {elseif $s_error.username == "username_taken"}
+                  <span class="help-block">Já existe uma conta com esse username.</span>
+                  {else}
                   <span class="help-block hide">Username inválido.</span>
+                  {/if}
                 </div>
+
+                {if $s_error.password_2 == "invalid"}
+                <div class="form-group has-error">
+                {else}
                 <div class="form-group">
-                  <input type="password" data-placement="bottom" rel="tooltip" data-original-title="Mínimo 6 caracteres, sem espaços" class="form-control" id="input_password_2" placeholder="password" onblur="validateNewPassword()">
+                {/if}
+                  <input type="password" data-placement="bottom" rel="tooltip" data-original-title="Mínimo 6 caracteres, sem espaços" class="form-control" id="input_password_2" name="password_2" placeholder="password" onblur="validateNewPassword()" value="{$s_values.password_2}">
+                  {if $s_error.password_2 == "invalid"}
+                  <span class="help-block">Password inválida.</span>
+                  {else}
                   <span class="help-block hide">Password inválida.</span>
+                  {/if}
                 </div>
+                {if $s_error.password_3 == "no_match"}
+                <div class="form-group has-error">
+                {else}
                 <div class="form-group">
-                  <input type="password" class="form-control" id="input_password_3" placeholder="confirmar password" onblur="matchPasswords()">
+                {/if}
+                  <input type="password" class="form-control" id="input_password_3" placeholder="confirmar password" name="password_3" onblur="matchPasswords()" value="{$s_values.password_3}">
+                  {if $s_error.password_3 == "no_match"}
+                  <span class="help-block">Passwords não são iguais.</span>
+                  {else}
                   <span class="help-block hide">Passwords não são iguais.</span>
+                  {/if}
                 </div>
                 <button type="submit" class="btn btn-default">Criar</button>
               </form>

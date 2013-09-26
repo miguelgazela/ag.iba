@@ -12,6 +12,12 @@ $(document).ready(function() {
 
     // tooltips
     $('[rel=tooltip]').tooltip();
+
+    // signup form
+    $("#signup_form").submit(function(event) {
+        return true;
+        //return (validateNewUsername() && validateNewPassword() && matchPasswords());
+    });
 });
 
 function validateNewUsername() {
@@ -21,9 +27,11 @@ function validateNewUsername() {
     if(!OK) { // invalid username
         $("#input_username_2").next().removeClass("hide");
         $("#input_username_2").parent(".form-group").addClass("has-error");
+        return false;
     } else {
         $("#input_username_2").parent(".form-group").removeClass("has-error");
         $("#input_username_2").next().addClass("hide");
+        return true;
     }
 }
 
@@ -34,9 +42,11 @@ function validateNewPassword() {
     if(!OK) { // invalid password
         $("#input_password_2").next().removeClass("hide");
         $("#input_password_2").parent(".form-group").addClass("has-error");
+        return false;
     } else {
         $("#input_password_2").next().addClass("hide");
         $("#input_password_2").parent(".form-group").removeClass("has-error");
+        return true;
     }
 }
 
@@ -47,8 +57,10 @@ function matchPasswords() {
     if(password1 != password2) {
         $("#input_password_3").next().removeClass("hide");
         $("#input_password_3").parent(".form-group").addClass("has-error");
+        return false;
     } else {
         $("#input_password_3").next().addClass("hide");
-        $("#input_password_3").parent(".form-group").removeClass("has-error");   
+        $("#input_password_3").parent(".form-group").removeClass("has-error");
+        return true;
     }
 }

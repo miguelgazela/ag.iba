@@ -3,7 +3,7 @@
 
     session_destroy();
     session_start();
-    $_SESSION['s_ok'] = 'fresh_session';
+    $_SESSION['s_ok'] = 'new_session';
 
-    header("Location: $BASE_URL"."index.php");
+    header("Location: $BASE_URL"."pages/login.php");
 ?>

@@ -2,8 +2,9 @@
 	include_once('init.php');
     include_once("../database/taxes.php");
 
-    $taxes = getAllTaxes(1);
+    echo "deu";
 
-    echo (count($taxes));
-    echo "Hello world!";
+    $result = $db->query("SELECT * from utilizador");
+    
+    echo $result->fetch();
 ?>

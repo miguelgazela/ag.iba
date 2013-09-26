@@ -40,7 +40,7 @@
     }
 
     function returnIfHasErrors($errors, $url) {
-        //global $BASE_URL;
+        global $BASE_URL;
         if($errors->hasErrors()) {
             $_SESSION['s_error'] = $errors->getErrors();
             $_SESSION['s_values'] = $_POST;
