@@ -1,76 +1,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="@miguelgazela">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.png"> <!-- no resource for now -->
+  {include file="../header.tpl" title="Ag.iba - Impostos"}
 
-    <title>Agiva</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="../css/main.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="../../assets/js/html5shiv.js"></script>
-      <script src="../../assets/js/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Ag.iba</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>CLIENTES</strong> <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Ver clientes</a></li>
-                <li><a href="#">Adicionar cliente</a></li>
-                <li><a href="#">Outro</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>IMPOSTOS</strong> <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Ver impostos</a></li>
-                <li><a href="#">Adicionar imposto</a></li>
-                <li><a href="#">Outro</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>OUTROS</strong> <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Reportar erro</a></li>
-                <li><a href="#">Enviar sugestão</a></li>
-                <li><a href="#">Outro</a></li>
-              </ul>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#bug"><span class="glyphicon glyphicon-log-out"></span> <strong>Logout</strong></a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+  <body class="_taxes">
+    {include file="../navbar.tpl"}
 
     <div class="container">
-
       <div class="row">
         <div class="col-md-9">
           <div class="table-responsive">
@@ -78,8 +14,10 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Nome</th>
-                  <th>NIF/NIPC</th>
+                  <th>Cliente</th>
+                  <th>Viatura</th>
+                  <th>Matrícula</th>
+                  <th>Data limite</th>
                   <th></th>
                   <th></th>
                 </tr>
@@ -88,10 +26,12 @@
                 <tr>
                   <td>1</td>
                   <td><a href="#">Manuel Lda</a></td>
-                  <td>505992973</td>
+                  <td>BMW 320d</td>
+                  <td>14-74-SL</td>
+                  <td>31/10/2013 <span class="badge badge-danger">23</span></td>
                   <td>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                      <button type="button" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown">
                         acção <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
@@ -108,12 +48,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>1</td>
-                  <td><a href="#">Manuel Lda</a></td>
-                  <td>505992973</td>
+                  <td>2</td>
+                  <td><a href="#">Catarina Neves</a></td>
+                  <td>BMW 320d</td>
+                  <td>14-74-SL</td>
+                  <td>31/10/2013 <span class="badge badge-danger">27</span></td>
                   <td>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                      <button type="button" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown">
                         acção <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
@@ -130,12 +72,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>1</td>
-                  <td><a href="#">Manuel Lda</a></td>
-                  <td>505992973</td>
+                  <td>2</td>
+                  <td><a href="#">Vitor Oliveira</a></td>
+                  <td>Opel Astra</td>
+                  <td>77-CJ-84</td>
+                  <td>30/11/2013 <span class="badge badge-warning">45</span></td>
                   <td>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                      <button type="button" class="btn btn-warning btn-xs dropdown-toggle" data-toggle="dropdown">
                         acção <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
@@ -152,12 +96,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>1</td>
-                  <td><a href="#">Manuel Lda</a></td>
-                  <td>505992973</td>
+                  <td>2</td>
+                  <td><a href="#">Vitor Oliveira</a></td>
+                  <td>Opel Astra</td>
+                  <td>77-CJ-84</td>
+                  <td>30/11/2013 <span class="badge badge-warning">45</span></td>
                   <td>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                      <button type="button" class="btn btn-warning btn-xs dropdown-toggle" data-toggle="dropdown">
                         acção <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
@@ -174,12 +120,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>1</td>
-                  <td><a href="#">Manuel Lda</a></td>
-                  <td>505992973</td>
+                  <td>2</td>
+                  <td><a href="#">Vitor Oliveira</a></td>
+                  <td>Opel Astra</td>
+                  <td>77-CJ-84</td>
+                  <td>30/11/2013 <span class="badge badge-warning">45</span></td>
                   <td>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                      <button type="button" class="btn btn-warning btn-xs dropdown-toggle" data-toggle="dropdown">
                         acção <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
@@ -196,12 +144,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>1</td>
-                  <td><a href="#">Manuel Lda</a></td>
-                  <td>505992973</td>
+                  <td>3</td>
+                  <td><a href="#">António Ferreira</a></td>
+                  <td>Audi A3</td>
+                  <td>08-66-VS</td>
+                  <td>30/11/2013 <span class="badge badge-success">90</span></td>
                   <td>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                      <button type="button" class="btn btn-success btn-xs dropdown-toggle" data-toggle="dropdown">
                         acção <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
@@ -218,12 +168,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>1</td>
-                  <td><a href="#">Manuel Lda</a></td>
-                  <td>505992973</td>
+                  <td>3</td>
+                  <td><a href="#">António Ferreira</a></td>
+                  <td>Audi A3</td>
+                  <td>08-66-VS</td>
+                  <td>30/11/2013 <span class="badge badge-success">90</span></td>
                   <td>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                      <button type="button" class="btn btn-success btn-xs dropdown-toggle" data-toggle="dropdown">
                         acção <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
@@ -240,12 +192,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>1</td>
-                  <td><a href="#">Manuel Lda</a></td>
-                  <td>505992973</td>
+                  <td>3</td>
+                  <td><a href="#">António Ferreira</a></td>
+                  <td>Audi A3</td>
+                  <td>08-66-VS</td>
+                  <td>30/11/2013 <span class="badge badge-success">90</span></td>
                   <td>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                      <button type="button" class="btn btn-success btn-xs dropdown-toggle" data-toggle="dropdown">
                         acção <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
@@ -262,12 +216,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>1</td>
-                  <td><a href="#">Manuel Lda</a></td>
-                  <td>505992973</td>
+                  <td>3</td>
+                  <td><a href="#">António Ferreira</a></td>
+                  <td>Audi A3</td>
+                  <td>08-66-VS</td>
+                  <td>30/11/2013 <span class="badge badge-success">90</span></td>
                   <td>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                      <button type="button" class="btn btn-success btn-xs dropdown-toggle" data-toggle="dropdown">
                         acção <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
@@ -284,12 +240,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>1</td>
-                  <td><a href="#">Manuel Lda</a></td>
-                  <td>505992973</td>
+                  <td>3</td>
+                  <td><a href="#">António Ferreira</a></td>
+                  <td>Audi A3</td>
+                  <td>08-66-VS</td>
+                  <td>30/11/2013 <span class="badge badge-success">90</span></td>
                   <td>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                      <button type="button" class="btn btn-success btn-xs dropdown-toggle" data-toggle="dropdown">
                         acção <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
@@ -306,12 +264,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>1</td>
-                  <td><a href="#">Manuel Lda</a></td>
-                  <td>505992973</td>
+                  <td>3</td>
+                  <td><a href="#">António Ferreira</a></td>
+                  <td>Audi A3</td>
+                  <td>08-66-VS</td>
+                  <td>30/11/2013 <span class="badge badge-success">90</span></td>
                   <td>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                      <button type="button" class="btn btn-success btn-xs dropdown-toggle" data-toggle="dropdown">
                         acção <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
@@ -328,12 +288,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>1</td>
-                  <td><a href="#">Manuel Lda</a></td>
-                  <td>505992973</td>
+                  <td>3</td>
+                  <td><a href="#">António Ferreira</a></td>
+                  <td>Audi A3</td>
+                  <td>08-66-VS</td>
+                  <td>30/11/2013 <span class="badge badge-success">90</span></td>
                   <td>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                      <button type="button" class="btn btn-success btn-xs dropdown-toggle" data-toggle="dropdown">
                         acção <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
@@ -358,7 +320,7 @@
           <form class="form-inline" role="form" action="#">
             <div class="form-group">
               <label class="sr-only" for="exampleInputEmail2">Search</label>
-              <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Search">
+              <input type="search" class="form-control" id="exampleInputEmail2" placeholder="Search">
             </div>
           </form>
           <hr>
@@ -374,7 +336,7 @@
               <li><a href="#">Separated link</a></li>
             </ul>
           </div>
-          <button type="button" class="btn btn-success btn-sidebar btn-separate">Adicionar cliente</button>
+          <button type="button" class="btn btn-success btn-sidebar btn-separate">Adicionar imposto</button>
           <hr>
           <div class="panel panel-default">
             <!-- Default panel contents -->
@@ -383,37 +345,28 @@
               <li class="list-group-item">
                 <span class="badge">há 17m</span>
                 <h5 class="list-group-item-heading">miguelgazela</h5>
-                <p class="list-group-item-text">Adicionou Manuel Oliveira</p>
+                <p class="list-group-item-text">Adiantou data limite de 77-CJ-84</p>
               </li>
               <li class="list-group-item">
                 <span class="badge">há 4h</span>
                 <h5 class="list-group-item-heading">vmcnoliveira</h5>
-                <p class="list-group-item-text">Removeu Hitler Costa</p>
+                <p class="list-group-item-text">Atrasou data limite de 14-74-SL</p>
               </li>
               <li class="list-group-item">
                 <span class="badge">há 2d</span>
                 <h5 class="list-group-item-heading">List group item heading</h5>
-                <p class="list-group-item-text">Adicionou Bela Bele</p>
+                <p class="list-group-item-text">Eliminou imposto de 08-66-VS</p>
               </li>
               <li class="list-group-item">
                 <span class="badge">há 1sem</span>
                 <h5 class="list-group-item-heading">List group item heading</h5>
-                <p class="list-group-item-text">Removeu Costa Cabral</p>
+                <p class="list-group-item-text">texto aqui e tal</p>
               </li>
             </ul>
           </div>
         </div>
       </div>
-
     </div> <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../js/jquery.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/modernizr.min.js"></script>
+    {include file="../js-dependencies.tpl"}
   </body>
 </html>

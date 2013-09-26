@@ -1,8 +1,10 @@
 <?php
     // This file is included in every page
+    ini_set('display_errors', 'On');
 
     // Define some base paths
-    $BASE_URL = 'http://paginas.fe.up.pt/~ei10076/agiva-3.0/';
+    $BASE_URL = 'http://paginas.fe.up.pt/~ei10076/projects/agiba/';
+    $BASE_PATH = '/usr/users2/mieic2010/ei10076/public_html/projects/agiba/';
 
     require_once('database.php');
     require_once('session.php');
@@ -47,7 +49,7 @@
 
     function getNormalDate($date) {
         $date = getdate(strtotime($date));
-        return $date[mday]." ".substr($date[month], 0, 3)." ".$date[year];
+        return $date[mday]."/".substr($date[month], 0, 3)."/".$date[year];
     }
 
     function getPrettyDate($date) {

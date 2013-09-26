@@ -45,6 +45,14 @@ a:focus {
   display: none;
 }
 
+.btn-success,
+.btn-warning,
+.btn-danger {
+  -webkit-transition: background-color 0.2s;
+  border: none;
+}
+
+
 /* ==========================================================================
    login custom styles
    ========================================================================== */
@@ -55,6 +63,14 @@ a:focus {
    navbar custom styles
    ============================================================= */
 
+
+/* navigation bar current page */
+body._clients .nav > li._clients a,
+body._taxes .nav > li._taxes a {
+  color: #3acf93;
+  margin-bottom: 14px;
+  border-bottom: 1px solid #3acf93;
+}
 
 .navbar-default {
     background-color: #ffffff;
@@ -123,7 +139,6 @@ a:focus {
 }
 
 .dropdown-menu {
-  border-top: 1px solid #3acf93;
   border-radius: 0;
 }
 
@@ -171,10 +186,6 @@ a:focus {
   width: 100%;
 }
 
-.sidebar .btn {
-  margin-bottom: 10px;
-}
-
 .sidebar .btn-danger {
   margin-bottom: 0;
 }
@@ -198,6 +209,10 @@ a:focus {
   border-radius: 0;
 }
 
+.btn-separate {
+  margin-top: 10px;
+}
+
 .sidebar .form-group {
   width: 100%;
 }
@@ -217,9 +232,38 @@ a:focus {
 }
 
 /* =============================================================
-   add client custom styles
+   login custom styles
    ============================================================= */
 
+.jumbotron {
+  background-color: rgba(115, 115, 115, 0.2);
+}
+
+.jumbotron h1 {
+  color: #3acf93;
+  margin-bottom: 15px;
+}
+
+.jumbotron p {
+  color: #737373;
+}
+
+.jumbotron span {
+  font-size: 15px;
+}
+
+.jumbotron button {
+  min-width: 150px;
+}
+
+.jumbotron .form-control {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+}
+
+/* =============================================================
+   add client custom styles
+   ============================================================= */
 
 .add_client h3 {
   margin-top: 0;
@@ -228,7 +272,6 @@ a:focus {
 .add_client form {
   margin-top: 30px;
 }
-
 
 /* =============================================================
    others custom styles
@@ -272,13 +315,10 @@ hr {
   border-radius: 0;
 }
 
-.btn-default .caret {
-  border-top-color: #737373;
-}
-
+.btn-default .caret,
 .btn-default:hover .caret,
 .btn-default:focus .caret {
-  border-top-color: #737373;
+  border-top-color: #3acf93;
 }
 
 .badge-danger {

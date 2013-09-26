@@ -1,57 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
-
-    <title>Signin Template for Bootstrap</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="../css/main.css" rel="stylesheet">
-
-    <style>
-
-    .jumbotron {
-      background-color: rgba(115, 115, 115, 0.2);
-    }
-
-    .jumbotron h1 {
-      color: #3acf93;
-      margin-bottom: 15px;
-    }
-
-    .jumbotron p {
-      color: #737373;
-    }
-
-    .jumbotron span {
-      font-size: 15px;
-    }
-
-    .jumbotron button {
-      min-width: 150px;
-    }
-
-    .form-control {
-      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-      box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-    }
-
-    </style>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="../../assets/js/html5shiv.js"></script>
-      <script src="../../assets/js/respond.min.js"></script>
-    <![endif]-->
-  </head>
+  {include file="header.tpl" title="Ag.iba - Signin or Signup"}
 
   <body>
       <div class="jumbotron">

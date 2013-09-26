@@ -11,20 +11,20 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="dropdown">
+        <li class="dropdown _clients">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>CLIENTES</strong> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Ver clientes</a></li>
-            <li><a href="#">Adicionar cliente</a></li>
-            <li><a href="#">Outro</a></li>
+            <li><a href="{$BASE_URL}pages/clients/list.php">Ver clientes</a></li>
+            <li><a href="{$BASE_URL}actions/clients/add.php">Adicionar cliente</a></li>
+            <!--<li><a href="#">Outro</a></li>-->
           </ul>
         </li>
-        <li class="dropdown">
+        <li class="dropdown _taxes">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>IMPOSTOS</strong> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Ver impostos</a></li>
-            <li><a href="#">Adicionar imposto</a></li>
-            <li><a href="#">Outro</a></li>
+            <li><a href="{$BASE_URL}pages/taxes/list.php">Ver impostos</a></li>
+            <li><a href="{$BASE_URL}actions/taxes/add.php">Adicionar imposto</a></li>
+            <!--<li><a href="#">Outro</a></li>-->
           </ul>
         </li>
         <li class="dropdown">
@@ -32,12 +32,14 @@
           <ul class="dropdown-menu">
             <li><a href="#">Reportar erro</a></li>
             <li><a href="#">Enviar sugestão</a></li>
-            <li><a href="#">Outro</a></li>
+            <!--<li><a href="#">Outro</a></li>-->
           </ul>
       </ul>
+      {if $s_username != ""}
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#bug"><span class="glyphicon glyphicon-log-out"></span> <strong>Logout</strong></a></li>
+        <li><a href="{$BASE_URL}actions/logout.php"><span class="glyphicon glyphicon-log-out"></span> <strong>Logout</strong></a></li>
       </ul>
+      {/if}
     </div><!--/.nav-collapse -->
   </div>
 </div>

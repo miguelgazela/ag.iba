@@ -1,16 +1,16 @@
-drop table if exists utilizadores;
-drop table if exists clientes;
-drop table if exists impostos;
-drop table if exists actividades;
+drop table if exists utilizador;
+drop table if exists cliente;
+drop table if exists imposto;
+drop table if exists actividade;
 
-create table utilizadores (
+create table utilizador (
 	id_utilizador integer primary key autoincrement,
 	username text,
 	pass_hash text,
 	tipo integer
 );
 
-create table clientes (
+create table cliente (
 	id_cliente integer primary key autoincrement,
 	nome text,
 	morada text,
@@ -21,7 +21,7 @@ create table clientes (
 	tipo integer
 );
 
-create table impostos (
+create table imposto (
 	id_imposto integer primary key autoincrement,
 	id_cliente not null references clientes(id_cliente),
 	marca text,
@@ -32,7 +32,7 @@ create table impostos (
 	tipo integer
 );
 
-create table actividades (
+create table actividade (
 	id_actividade integer primary key autoincrement,
 	id_utilizador not null references utilizadores(id_utilizador),
 	id_cliente references clientes(id_cliente),
