@@ -13,14 +13,14 @@
           <div class="row">
             <div class="col-md-6">
               <p>Login em conta existente</p>
-              <form role="form">
+              <form role="form" id="signin_form">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="input_username_1" placeholder="username">
+                  <input type="text" class="form-control" id="input_username_1" placeholder="username" name="username" onblur="validateSignInUsername()">
                   <span class="help-block hide">Username inválido.</span>
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control" id="input_password_1" placeholder="password">
-                  <span class="help-block hide">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+                  <input type="password" class="form-control" id="input_password_1" placeholder="password" name="password" onblur="validateSignInPassword()">
+                  <span class="help-block hide">Password inválida.</span>
                 </div>
                 <button type="submit" class="btn btn-default">Login</button>
               </form>

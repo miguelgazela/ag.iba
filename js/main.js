@@ -15,39 +15,49 @@ $(document).ready(function() {
 
     // signup form
     $("#signup_form").submit(function(event) {
+        return (validateNewUsername() && validateNewPassword() && matchPasswords());
+    });
+
+    // signin form
+    $("#signin_form").submit(function() {
         return true;
-        //return (validateNewUsername() && validateNewPassword() && matchPasswords());
+        //return (validateSignInUsername() && validateSignInPassword());
     });
 });
 
-function validateNewUsername() {
-    var username = $("#input_username_2").val().trim();
-    var OK = /^[a-z0-9A-Z._]{4,64}$/.exec(username);
+function validateLoginPageInput(value, pattern, object) {
+    var OK = pattern.exec(value);
 
-    if(!OK) { // invalid username
-        $("#input_username_2").next().removeClass("hide");
-        $("#input_username_2").parent(".form-group").addClass("has-error");
+    if(!OK) { // invalid input
+        object.next().removeClass('hide');
+        object.parent('.form-group').addClass('has-error');
         return false;
     } else {
-        $("#input_username_2").parent(".form-group").removeClass("has-error");
-        $("#input_username_2").next().addClass("hide");
+        object.next().addClass('hide');
+        object.parent('.form-group').removeClass('has-error');
         return true;
     }
 }
 
+function validateSignInUsername() {
+    var username = $("#input_username_1").val().trim();
+    return validateLoginPageInput(username, /^[a-z0-9A-Z._]{4,64}$/, $("#input_username_1"));
+}
+
+function validateSignInPassword() {
+    var password = $("#input_password_1").val().trim();
+    return validateLoginPageInput(password, /^[a-zA-Z0-9.,-:;_!#$%&*~]{6,30}$/, $("#input_password_1"));
+}
+
+function validateNewUsername() {
+    var username = $("#input_username_2").val().trim();
+    console.log("here");
+    return validateLoginPageInput(username, /^[a-z0-9A-Z._]{4,64}$/, $("#input_username_2"));
+}
+
 function validateNewPassword() {
     var password = $("#input_password_2").val().trim();
-    var OK = /^[a-zA-Z0-9.,-:;_!#$%&*~]{6,30}$/.exec(password);
-
-    if(!OK) { // invalid password
-        $("#input_password_2").next().removeClass("hide");
-        $("#input_password_2").parent(".form-group").addClass("has-error");
-        return false;
-    } else {
-        $("#input_password_2").next().addClass("hide");
-        $("#input_password_2").parent(".form-group").removeClass("has-error");
-        return true;
-    }
+    return validateLoginPageInput(password, /^[a-zA-Z0-9.,-:;_!#$%&*~]{6,30}$/, $("#input_password_2"));
 }
 
 function matchPasswords() {
