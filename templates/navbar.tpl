@@ -37,7 +37,7 @@
       </ul>
       {if $s_username != ""}
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{$BASE_URL}actions/logout.php"><span class="glyphicon glyphicon-log-out"></span> <strong>Logout</strong></a></li>
+        <li><a href="{$BASE_URL}actions/auth/logout.php"><span class="glyphicon glyphicon-log-out"></span> <strong>Logout</strong></a></li>
       </ul>
       {/if}
     </div><!--/.nav-collapse -->

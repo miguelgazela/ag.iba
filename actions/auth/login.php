@@ -10,21 +10,18 @@
 
     if($user) {
         if ($user['tipo'] != 1) {
-            echo "ACCESS";
+            $_SESSION['s_username'] = $username;
+            $_SESSION['s_user_permission'] = $user['tipo'];
+            $_SESSION['s_user_id'] = $user['id_utilizador'];
+            header("Location: $BASE_URL" . "index.php");
         } else {
-            echo "NO_ACCESS!";
+            $_SESSION['s_error']['login'] = "inactive_account";
+            $_SESSION['s_values']['username_login'] = $username;
+            header("Location: $BASE_URL" . "pages/login.php");
         }
-        /*
-        $_SESSION['s_username'] = $username;
-        $_SESSION['s_user_permission'] = $user['tipo'];
-        $_SESSION['s_user_id'] = $user['id_utilizador'];
-        header("Location: $BASE_URL" . "index.php");
-        exit();*/
     } else {
-        echo "NO!";
         $_SESSION['s_error']['login'] = "invalid_access";
         $_SESSION['s_values']['username_login'] = $username;
         header("Location: $BASE_URL" . "pages/login.php");
-        exit();
     }
 ?>
