@@ -10,6 +10,13 @@
         return $stmt->fetch();
     }
 
+    function getUser($username, $pass_hash) {
+        global $db;
+        $stmt = $db->prepare("SELECT id_utilizador, tipo FROM utilizador WHERE username = ? AND pass_hash = ?");
+        $stmt->execute(array($username, $pass_hash));
+        return $stmt->fetch();
+    }
+
     function createAccount($username, $pass_hash) {
         global $db;
         $errors = new DatabaseException();

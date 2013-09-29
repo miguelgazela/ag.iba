@@ -6,20 +6,24 @@
     $password = $_POST['password'];
 
     // Never store passwords in clear text!
-    $userInfo = getUserInfoByLogin($username, sha1($password));
+    $user = getUser($username, sha1($password));
 
-    if ($userInfo['result'] == "OK") {
-        updateLastAccess($username);
+    var_dump($user);
+
+    if($user) {
+        /*
         $_SESSION['s_username'] = $username;
-        $_SESSION['s_permission'] = $userInfo['user']['tipo'];
-        $_SESSION['s_user_id'] = $userInfo['user']['userid'];
-        $_SESSION['s_ok'] = "Login Ok";
-        header("Location: $BASE_URL"."index.php");
+        $_SESSION['s_user_permission'] = $user['tipo'];
+        $_SESSION['s_user_id'] = $user['id_utilizador'];
+        header("Location: $BASE_URL" . "index.php");
+        */
         exit();
     } else {
-        $_SESSION['s_error']['login'] = "invalid_credentials";
-        $_SESSION['s_values'] = $_POST;
-        header("Location: $BASE_URL"."pages/login.php");
+        /*
+        $_SESSION['s_error']['login'] = "invalid_access";
+        $_SESSION['s_values']['username_login'] = $username;
+        header("Location: $BASE_URL" . "pages/login.php");
+        */
         exit();
     }
 ?>

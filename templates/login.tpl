@@ -13,14 +13,26 @@
           <div class="row">
             <div class="col-md-6">
               <p>Login em conta existente</p>
-              <form role="form" id="signin_form">
+              <form role="form" id="signin_form" action="{$BASE_URL}actions/auth/login.php" method="post">
+                {if $s_error.login == ""}
                 <div class="form-group">
-                  <input type="text" class="form-control" id="input_username_1" placeholder="username" name="username" onblur="validateSignInUsername()">
+                {else}
+                <div class="form-group has-error">
+                {/if}
+                  <input type="text" class="form-control" id="input_username_1" placeholder="username" name="username" onblur="validateSignInUsername()" value="{$s_values.username_login}">
                   <span class="help-block hide">Username inválido.</span>
                 </div>
+                {if $s_error.login == ""}
                 <div class="form-group">
+                {else}
+                <div class="form-group has-error">
+                {/if}
                   <input type="password" class="form-control" id="input_password_1" placeholder="password" name="password" onblur="validateSignInPassword()">
-                  <span class="help-block hide">Password inválida.</span>
+                  {if $s_error.login == ""}
+                   <span class="help-block hide">Password inválida.</span>
+                  {else}
+                   <span class="help-block">Username inexistente ou password inválida.</span>
+                  {/if}
                 </div>
                 <button type="submit" class="btn btn-default">Login</button>
               </form>

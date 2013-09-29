@@ -9,6 +9,7 @@ $(document).ready(function() {
         $('#input_due_date').datepicker('show');
     });
 
+    // js code for the login page ->
 
     // tooltips
     $('[rel=tooltip]').tooltip();
@@ -23,6 +24,8 @@ $(document).ready(function() {
         return true;
         //return (validateSignInUsername() && validateSignInPassword());
     });
+
+    // <-- js code for the login page
 });
 
 function validateLoginPageInput(value, pattern, object) {
