@@ -4,9 +4,6 @@
   {include file="header.tpl" title="Ag.iba - Signin or Signup"}
 
   <body>
-      {if $s_error.message != ""}
-      <p>{$s_error.message}</p>
-      {/if}
       <div class="jumbotron">
         <div class="container">
           <h1><strong>Ag.iba</strong></h1>
@@ -79,7 +76,11 @@
                   <span class="help-block hide">Passwords não são iguais.</span>
                   {/if}
                 </div>
+                {if $s_values.message == "account_created"}
+                <p style="color: #3acf93;">Conta criada com sucesso.</p>
+                {else}
                 <button type="submit" class="btn btn-default">Criar</button>
+                {/if}
               </form>
             </div>
           </div>

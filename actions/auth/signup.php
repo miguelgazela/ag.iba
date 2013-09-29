@@ -59,8 +59,8 @@
 
         // add the new user to the database
         try {
-            createAccount($username, sha1($pass1));
-            $_SESSION['s_error']['message'] = "account_created";  
+            createAccount($username, sha1($pass2));
+            $_SESSION['s_values']['message'] = "account_created";  
             header("Location: $BASE_URL"."pages/login.php");
         } catch(DatabaseException $e) {
             returnIfHasErrors($errors, "pages/login.php");
