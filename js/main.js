@@ -79,11 +79,70 @@ function matchPasswords() {
 }
 
 function validateClientName() {
-    var name = $("#input_name").val().trim();
-    return validateInput(name, /^([a-zA-Z\u00C0-\u00ff,-.]+ )+[a-zA-Z,-.]+$/, $("#input_name"));
+    var input_name = $("#input_name");
+    var name = input_name.val().trim();
+    return validateInput(name, /^([a-zA-Z\u00C0-\u00ff,-.]+ )+[a-zA-Z,-.]+$/, input_name);
 }
 
 function validateClientAddress() {
     var address = $("#input_address").val().trim();
-    return validateInput(address, /^[a-zA-Z0-9,:-_ªº]$/, $("#input_address"));
+    return validateInput(address, /^[a-zA-Z0-9\u00C0-\u00ff,:-_ ªº]{6,}$/, $("#input_address"));
 }
+
+function validateClientCity() {
+    var city = $("#input_city").val().trim();
+    return validateInput(city, /^[a-zA-Z\u00C0-\u00ff ]{3,}$/, $("#input_city"));
+}
+
+function validateClientVillage() {
+    var village = $("#input_village").val().trim();
+    return validateInput(village, /^[a-zA-Z\u00C0-\u00ff ]{3,}$/, $("#input_village"));
+}
+
+function validateClientPostal() {
+    var postal = $("#input_postal").val().trim();
+    return validateInput(postal, /^[0-9]{4}(-[0-9]{3})?$/, $("#input_postal"));
+}
+
+function validateClientNif() {
+    nif_input = $("#input_nif");
+    var nif = nif_input.val().trim();
+    if(validateInput(nif, /^[125689][0-9]{8}$/, nif_input)) {
+        if(!validateNif(nif)){
+            nif_input.next().text("NIF inválido.");
+            nif_input.next().removeClass('hide');
+            nif_input.parents('.form-group').addClass('has-error');
+            return false;
+        } else {
+            nif_input.next().text("Deve ter 9 algarismos e começar por um dos seguintes: 1, 2, 5, 6, 7, 8 ou 9.");
+            nif_input.next().addClass('hide');
+            nif_input.parents('.form-group').removeClass('has-error');
+            return true;
+        }
+    }
+}
+
+function validateNif(nif) {
+    var control = nif[0] * 9;
+    for(var i = 2; i <= 8; i++) {
+        control += nif[i-1] * (10-i);
+    }
+    control = 11 - (control % 11);
+    console.log(control);
+    if(control >= 10) {
+        control = 0;
+    }
+    return nif[8] == control;
+}
+
+function checkNifType() {
+    var nif = $("#input_nif").val().trim();
+    if("12".indexOf(nif[0]) != -1) {
+        $("#input_nif").parent().prev().text("NIF");
+    } else if("56789".indexOf(nif[0]) != -1) {
+        $("#input_nif").parent().prev().text("NIPC");
+    } else {
+        $("#input_nif").parent().prev().text("NIF/NIPC");
+    }
+}
+

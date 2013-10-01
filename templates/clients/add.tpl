@@ -21,36 +21,36 @@
             <div class="form-group">
               <label for="input_address" class="col-lg-2 control-label">Morada</label>
               <div class="col-lg-6">
-                <input type="text" class="form-control" id="input_address" name="address" placeholder="morada" onlbur="validateClientAddress()">
+                <input type="text" class="form-control" id="input_address" name="address" placeholder="morada" onblur="validateClientAddress()">
                 <span class="help-block hide">Morada demasiado curta.</span>
               </div>
             </div>
             <div class="form-group">
               <label for="input_city" class="col-lg-2 control-label">Cidade</label>
               <div class="col-lg-6">
-                <input type="text" class="form-control" id="input_city" placeholder="cidade">
+                <input type="text" class="form-control" id="input_city" placeholder="cidade" name="city" onblur="validateClientCity()">
                 <span class="help-block hide">Deve ter pelo menos 3 caracteres, sem números.</span>
               </div>
             </div>
             <div class="form-group">
               <label for="input_village" class="col-lg-2 control-label">Freguesia</label>
               <div class="col-lg-6">
-                <input type="text" class="form-control" id="input_village" placeholder="freguesia">
+                <input type="text" class="form-control" id="input_village" name="village" onblur="validateClientVillage()" placeholder="freguesia">
                 <span class="help-block hide">Deve ter pelo menos 3 caracteres, sem números.</span>
               </div>
             </div>
             <div class="form-group">
               <label for="input_postal" class="col-lg-2 control-label">Código-Postal</label>
               <div class="col-lg-6">
-                <input type="text" class="form-control" id="input_postal" placeholder="####[-###]">
-                <span class="help-block hide">Deve ter formato ####-### ou ####.</span>
+                <input type="text" class="form-control" id="input_postal" name="postal" onblur="validateClientPostal()" placeholder="####[-###]">
+                <span class="help-block hide">Deve ter formato #### ou ####-###.</span>
               </div>
             </div>
             <div class="form-group">
               <label for="input_nif" class="col-lg-2 control-label">NIF/NIPC</label>
               <div class="col-lg-6">
-                <input type="text" class="form-control" id="input_nif" placeholder="nif/nipc">
-                <span class="help-block hide">Deve ter 9 algarismos e começar por um dos seguintes: 1,2,5,6,8 ou 9.</span>
+                <input type="text" class="form-control" id="input_nif" name="nif" onblur="validateClientNif()" onkeyup="checkNifType()" placeholder="nif/nipc">
+                <span class="help-block hide">Deve ter 9 algarismos e começar por um dos seguintes: 1, 2, 5, 6, 7, 8 ou 9.</span>
               </div>
             </div>
             <div class="form-group">
