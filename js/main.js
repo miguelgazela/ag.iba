@@ -28,39 +28,39 @@ $(document).ready(function() {
     // <-- js code for the login page
 });
 
-function validateLoginPageInput(value, pattern, object) {
+function validateInput(value, pattern, object) {
     var OK = pattern.exec(value);
 
     if(!OK) { // invalid input
         object.next().removeClass('hide');
-        object.parent('.form-group').addClass('has-error');
+        object.parents('.form-group').addClass('has-error');
         return false;
     } else {
         object.next().addClass('hide');
-        object.parent('.form-group').removeClass('has-error');
+        object.parents('.form-group').removeClass('has-error');
         return true;
     }
 }
 
 function validateSignInUsername() {
     var username = $("#input_username_1").val().trim();
-    return validateLoginPageInput(username, /^[a-z0-9A-Z._]{4,64}$/, $("#input_username_1"));
+    return validateInput(username, /^[a-z0-9A-Z._]{4,64}$/, $("#input_username_1"));
 }
 
 function validateSignInPassword() {
     var password = $("#input_password_1").val().trim();
-    return validateLoginPageInput(password, /^[a-zA-Z0-9.,-:;_!#$%&*~]{6,30}$/, $("#input_password_1"));
+    return validateInput(password, /^[a-zA-Z0-9.,-:;_!#$%&*~]{6,30}$/, $("#input_password_1"));
 }
 
 function validateNewUsername() {
     var username = $("#input_username_2").val().trim();
     console.log("here");
-    return validateLoginPageInput(username, /^[a-z0-9A-Z._]{4,64}$/, $("#input_username_2"));
+    return validateInput(username, /^[a-z0-9A-Z._]{4,64}$/, $("#input_username_2"));
 }
 
 function validateNewPassword() {
     var password = $("#input_password_2").val().trim();
-    return validateLoginPageInput(password, /^[a-zA-Z0-9.,-:;_!#$%&*~]{6,30}$/, $("#input_password_2"));
+    return validateInput(password, /^[a-zA-Z0-9.,-:;_!#$%&*~]{6,30}$/, $("#input_password_2"));
 }
 
 function matchPasswords() {
@@ -76,4 +76,14 @@ function matchPasswords() {
         $("#input_password_3").parent(".form-group").removeClass("has-error");
         return true;
     }
+}
+
+function validateClientName() {
+    var name = $("#input_name").val().trim();
+    return validateInput(name, /^([a-zA-Z\u00C0-\u00ff,-.]+ )+[a-zA-Z,-.]+$/, $("#input_name"));
+}
+
+function validateClientAddress() {
+    var address = $("#input_address").val().trim();
+    return validateInput(address, /^[a-zA-Z0-9,:-_ªº]$/, $("#input_address"));
 }
