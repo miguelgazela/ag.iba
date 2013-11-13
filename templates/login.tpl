@@ -1,7 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  {include file="header.tpl" title="Ag.iba - Signin or Signup"}
+  {include file="header.tpl" title="Ag.iba"}
 
   <body>
       <div class="jumbotron">

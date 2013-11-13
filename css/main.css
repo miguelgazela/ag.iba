@@ -73,8 +73,8 @@ body._taxes .nav > li._taxes > a {
 }
 
 .navbar-default {
-    background-color: #ffffff;
-    border-bottom: 1px solid rgba(115, 115, 115, 0.2)
+    background-color: #fff;
+    border-bottom: 1px solid rgba(115, 115, 115, 0.2);
 }
 
 /* changing navbar height --> */
@@ -131,7 +131,6 @@ body._taxes .nav > li._taxes > a {
   text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
 }
 
-.navbar-default .navbar-nav>.dropdown>a .caret,
 .navbar-default .navbar-nav>.dropdown>a:focus .caret,
 .navbar-default .navbar-nav>.dropdown>a:hover .caret {
   border-top-color: #3acf93;

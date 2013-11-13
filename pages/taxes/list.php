@@ -32,11 +32,10 @@
 
         // fetch latest activities
 
+        // assign data to smarty and display template
         $smarty->assign('taxes', $taxes);
         $smarty->assign('taxes_counter', count($taxes));
-
         $smarty->display("taxes/list.tpl");
-
     } else {
         header("Location: $BASE_URL"."pages/login.php");
     }

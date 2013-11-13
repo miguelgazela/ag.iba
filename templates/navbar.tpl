@@ -11,29 +11,10 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="dropdown _clients">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>CLIENTES</strong> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="{$BASE_URL}pages/clients/list.php">Ver clientes</a></li>
-            <li><a href="{$BASE_URL}actions/clients/add.php">Adicionar cliente</a></li>
-            <!--<li><a href="#">Outro</a></li>-->
-          </ul>
-        </li>
-        <li class="dropdown _taxes">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>IMPOSTOS</strong> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="{$BASE_URL}pages/taxes/list.php">Ver impostos</a></li>
-            <li><a href="{$BASE_URL}actions/taxes/add.php">Adicionar imposto</a></li>
-            <!--<li><a href="#">Outro</a></li>-->
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>OUTROS</strong> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Reportar erro</a></li>
-            <li><a href="#">Enviar sugestão</a></li>
-            <!--<li><a href="#">Outro</a></li>-->
-          </ul>
+        <li><a href="{$BASE_URL}pages/clientes/list.php">Ver Clientes</a></li>
+        <li><a href="{$BASE_URL}pages/clients/add.php">Adicionar cliente</a></li>
+        <li><a href="{$BASE_URL}pages/taxes/list.php">Ver impostos</a></li>
+        <li><a href="{$BASE_URL}pages/taxes/add.php">Adicionar imposto</a></li>
       </ul>
       {if $s_username != ""}
       <ul class="nav navbar-nav navbar-right">

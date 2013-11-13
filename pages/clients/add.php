@@ -4,8 +4,8 @@
     include_once($BASE_PATH . "database/users.php");
 
     if(isset($_SESSION['s_username'])) {
-        
+        $smarty->display("clients/add.tpl");
     } else {
-        echo "NO ACCESS!";
+        header("Location: $BASE_URL"."pages/login.php");
     }
 ?>

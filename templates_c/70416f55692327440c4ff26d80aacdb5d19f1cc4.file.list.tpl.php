@@ -1,76 +1,33 @@
-
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-29 14:52:35
+         compiled from "/Users/migueloliveira/Dropbox/projects/agiva-3.0/templates/taxes/list.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:106182893952482293808963-41734601%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '70416f55692327440c4ff26d80aacdb5d19f1cc4' => 
+    array (
+      0 => '/Users/migueloliveira/Dropbox/projects/agiva-3.0/templates/taxes/list.tpl',
+      1 => 1380360161,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '106182893952482293808963-41734601',
+  'function' => 
+  array (
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_524822938786c9_46996434',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_524822938786c9_46996434')) {function content_524822938786c9_46996434($_smarty_tpl) {?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="@miguelgazela">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.png"> <!-- no resource for now -->
+  <?php echo $_smarty_tpl->getSubTemplate ("../header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array('title'=>"Ag.iba - Impostos"), 0);?>
 
-    <title>Agiva</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <body class="_taxes">
+    <?php echo $_smarty_tpl->getSubTemplate ("../navbar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
-    <!-- Custom styles for this template -->
-    <link href="../css/main.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="../../assets/js/html5shiv.js"></script>
-      <script src="../../assets/js/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Ag.iba</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>CLIENTES</strong> <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Ver clientes</a></li>
-                <li><a href="#">Adicionar cliente</a></li>
-                <li><a href="#">Outro</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>IMPOSTOS</strong> <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Ver impostos</a></li>
-                <li><a href="#">Adicionar imposto</a></li>
-                <li><a href="#">Outro</a></li>
-              </ul>
-            </li>
-            <!--
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>OUTROS</strong> <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Reportar erro</a></li>
-                <li><a href="#">Enviar sugestão</a></li>
-                <li><a href="#">Outro</a></li>
-              </ul>
-            </li>
-            -->
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#bug"><span class="glyphicon glyphicon-log-out"></span> <strong>Logout</strong></a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
 
     <div class="container">
       <div class="row">
@@ -432,16 +389,9 @@
           </div>
         </div>
       </div>
-
     </div> <!-- /container -->
+    <?php echo $_smarty_tpl->getSubTemplate ("../js-dependencies.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../js/jquery.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/modernizr.min.js"></script>
   </body>
 </html>
+<?php }} ?>

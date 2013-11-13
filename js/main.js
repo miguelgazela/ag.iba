@@ -21,11 +21,20 @@ $(document).ready(function() {
 
     // signin form
     $("#signin_form").submit(function() {
-        return true;
-        //return (validateSignInUsername() && validateSignInPassword());
+        return (validateSignInUsername() && validateSignInPassword());
     });
 
     // <-- js code for the login page
+
+    $("#add_client_form").submit(function(){
+        return (validateClientName() &&
+            validateClientAddress() &&
+            validateClientCity() &&
+            validateClientVillage() &&
+            validateClientPostal() &&
+            validateClientNif()
+        );
+    });
 });
 
 function validateInput(value, pattern, object) {
@@ -91,12 +100,12 @@ function validateClientAddress() {
 
 function validateClientCity() {
     var city = $("#input_city").val().trim();
-    return validateInput(city, /^[a-zA-Z\u00C0-\u00ff ]{3,}$/, $("#input_city"));
+    return validateInput(city, /^[a-zA-Z\u00C0-\u00ff. ]{3,}$/, $("#input_city"));
 }
 
 function validateClientVillage() {
     var village = $("#input_village").val().trim();
-    return validateInput(village, /^[a-zA-Z\u00C0-\u00ff ]{3,}$/, $("#input_village"));
+    return validateInput(village, /^[a-zA-Z\u00C0-\u00ff. ]{3,}$/, $("#input_village"));
 }
 
 function validateClientPostal() {
@@ -128,7 +137,6 @@ function validateNif(nif) {
         control += nif[i-1] * (10-i);
     }
     control = 11 - (control % 11);
-    console.log(control);
     if(control >= 10) {
         control = 0;
     }
