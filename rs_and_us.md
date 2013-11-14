@@ -25,18 +25,18 @@
 * US011 - Como utilizador quero poder ordenar a listagem dos clientes que me é apresentada por difererentes 'categorias'
 * US012 - Como utilizador quero poder adicionar novos impostos a clientes da aplicação
 * US013 - Como utilizador quero poder editar impostos de clientes
-* UI014 - Como utilizador quero poder remover impostos de clientes
-* UI015 - Como utilizador quero poder marcar como pagos impostos de clientes
-* UI016 - Como utilizador quero poder ver uma listagem dos impostos da aplicação
-* UI017 - Como utilizador quero poder pesquisar impostos
-* UI018 - Como utilizador quero poder selecionar vários impostos ao mesmo tempo e realizar uma ação comum a todos esses
-* UI019 - Como utilizador quero poder selecionar vários clientes ao mesmo tempo e realizar uma ação comum a todos esses
-* UI020 - Como utilizador quero poder enviar sugestões de melhorias para o administrador
-* UI021 - Como utilizador quero poder enviar erros que encontrei na aplicação para o administrador
-* Como utilizador quero poder ver um histórico de atividades recentes
-* Como utilizador quero poder utilizar a aplicação no smartphone
-* Como administrador quero poder escolher se estou a ver os impostos de casa ou do escritório
-* Como administrador quero poder ver pedidos de registos de utilizadores
-* Como administrador quero poder aceitar pedidos de registos
-* Como administrador quero poder rejeitar pedidos de registos
-* 
+* US014 - Como utilizador quero poder remover impostos de clientes
+* US015 - Como utilizador quero poder marcar como pagos impostos de clientes
+* US016 - Como utilizador quero poder ver uma listagem dos impostos da aplicação
+* US017 - Como utilizador quero poder pesquisar impostos
+* US018 - Como utilizador quero poder selecionar vários impostos ao mesmo tempo e realizar uma ação comum a todos esses
+* US019 - Como utilizador quero poder selecionar vários clientes ao mesmo tempo e realizar uma ação comum a todos esses
+* US020 - Como utilizador quero poder enviar sugestões de melhorias para o administrador
+* US021 - Como utilizador quero poder enviar erros que encontrei na aplicação para o administrador
+* US022 - Como utilizador quero poder ver um histórico de atividades recentes
+* US023 - Como utilizador quero poder utilizar a aplicação no smartphone
+* US024 - Como administrador quero poder escolher se estou a ver os impostos de casa ou do escritório
+* US025 - Como administrador quero poder ver pedidos de registos de utilizadores
+* US026 - Como administrador quero poder aceitar pedidos de registos
+* US027 - Como administrador quero poder rejeitar pedidos de registos
+* US028 - Como utilizador quero poder fazer uma pesquisa local nas páginas com listagens
