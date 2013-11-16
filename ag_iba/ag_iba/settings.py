@@ -24,7 +24,9 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
+
+LOGIN_URL = 'app/login/'
 
 
 # Application definition
@@ -36,7 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'south'
+    'south',
+    'app',
 )
 
 MIDDLEWARE_CLASSES = (

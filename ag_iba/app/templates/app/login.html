@@ -1,0 +1,26 @@
+{% extends "app/base.html" %}
+
+{% block title %}Ag.Iba - Login{% endblock %}
+
+{% block content %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1><strong>Ag.Iba</strong></h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Login</p>
+                    <form action="app/login" method="post">
+                    {% csrf_token %}
+                        <input type="text">
+                        <button type="submit" class="btn btn-default">Login</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <p>Criar conta</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
