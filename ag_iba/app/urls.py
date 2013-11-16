@@ -4,6 +4,6 @@ from app import views
 
 
 urlpatterns = patterns('',
-    url(r'^login/', views.login),
+    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'app/login.html'}),
 )
 
