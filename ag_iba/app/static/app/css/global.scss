@@ -1,0 +1,68 @@
+// color schemes
+
+$dark_grey: #737373;
+$light_grey: #ddd;
+$brand_color: #3acf93;
+$brand_color_highlight: #8dee43;
+
+
+body {
+    background-color: white;
+    padding-top: 80px;
+    color: $dark_grey;
+}
+
+/* =============================================================
+   navbar custom styles
+   ============================================================= */
+
+.navbar {
+    min-height: 60px;
+}
+
+.navbar-default {
+    background-color: white;
+    border-bottom: 1px solid $light_grey;
+
+    .navbar-brand {
+        color: $brand_color;
+        font-weight: bold;
+        color: #3acf93;
+        text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+        font-size: 30px;
+        line-height: 30px;
+        padding: 15px 15px 15px 15px;
+        margin-right: 20px;
+        background-color: rgba(115, 115, 115, 0.2);
+        -webkit-transition: all .3s linear;
+        -moz-transition: all .3s linear;
+        transition: all .3s linear;
+    }
+
+    .navbar-brand:hover {
+        text-decoration: none;
+        color: $brand_color_highlight;
+        text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
+    }
+
+    .navbar-nav > li > {
+
+        a {
+            color: $dark_grey;
+            padding-top: 20px;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        a:hover,
+        a:focus {
+            color: $brand_color;
+            margin-bottom: 14px;
+            border-bottom: 1px solid $brand_color;
+        }
+        
+    }
+}
+
+
+

@@ -10,7 +10,7 @@
 
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'app/css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'app/css/build/global.css' %}" />
 
     <title>{% block title %}Ag.Iba{% endblock %}</title>
 </head>
@@ -30,14 +30,21 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    {% if user.is_authenticated %}
                     <li><a href="#">Clientes</a></li>
                     <li><a href="#">Adicionar cliente</a></li>
                     <li><a href="#">Impostos</a></li>
                     <li><a href="#">Adicionar imposto</a></li>
+                    {% endif %}
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
                     <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> <strong>Logout</strong></a></li>
+                    {% else %}
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> <strong>Login</strong></a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> <strong>Criar conta</strong></a></li>
+                    {% endif %}
                 </ul>
 
             </div><!--/.nav-collapse -->
