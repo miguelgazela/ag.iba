@@ -26,8 +26,6 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['localhost']
 
-LOGIN_URL = 'app/login/'
-
 
 # Application definition
 
@@ -40,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'south',
     'app',
+    'django_gravatar',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -84,3 +83,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# django-gravatar settings
+
+GRAVATAR_DEFAULT_IMAGE = 'monsterid'
