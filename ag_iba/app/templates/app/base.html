@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="@miguelgazela">
+    <link rel="shortcut icon" href="../favicon.png"> <!-- no resource for now -->
+
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'app/css/main.css' %}" />
+
+    <title>{% block title %}Ag.Iba{% endblock %}</title>
+</head>
+
+<body>
+    
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Ag.iba</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Clientes</a></li>
+                    <li><a href="#">Adicionar cliente</a></li>
+                    <li><a href="#">Impostos</a></li>
+                    <li><a href="#">Adicionar imposto</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> <strong>Logout</strong></a></li>
+                </ul>
+
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+
+    {% block content %}{% endblock %}
+    
+    <!-- Placed at the end of the document so the pages load faster -->
+    {% load staticfiles %}
+    <script src="{% static 'app/js/build/production.min.js' %}"></script>
+</body>
+</html>
