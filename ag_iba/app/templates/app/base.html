@@ -40,7 +40,7 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
-                    <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> <strong>Logout</strong></a></li>
+                    <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> <strong>Logout</strong></a></li>
                     {% else %}
                     <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> <strong>Login</strong></a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> <strong>Criar conta</strong></a></li>
