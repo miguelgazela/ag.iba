@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.forms import UserCreationForm
+from app.forms import UserCreationForm
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import login as auth_login
 from django.http import HttpResponse
@@ -46,7 +46,8 @@ def signup(request):
             user = user_form.save()
             user.is_active = False
             user.save()
-            return HttpResponse('A sua conta foi criada. Espere que seja ativada pelo administrador.')
+            return render(request, 'app/auth/signup.html',
+                {'username': username, 'status': 'success'})
         else:
             return render(request, 'app/auth/signup.html',
                 {'form': user_form})

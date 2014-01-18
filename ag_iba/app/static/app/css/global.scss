@@ -1,20 +1,115 @@
-// color schemes
+/* =============================================================
+   color scheme styles
+   ============================================================= */
 
-$dark-grey: #737373;
+$text-grey: #737373;
+$bg-grey: rgba(115, 115, 115, 0.2);
 $light-grey: #ddd;
 $brand-color: #3acf93;
 $brand-color-highlight: #8dee43;
+$danger-color: #e74c3c;
+$success-color: #2ecc71;
+
+/* =============================================================
+   mixins
+   ============================================================= */
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+
 
 /* =============================================================
    author custom styles
    ============================================================= */
 
 body {
-    color: $dark-grey;
+    color: $text-grey;
 }
 
 hr {
     border-top-color: $light-grey;
+}
+
+.auth-panel {
+    @include border-radius(0px);
+    margin-top: 50px;
+
+    .panel-heading {
+        @include border-radius(0px);
+        color: $brand-color;
+        background-color: $bg-grey;
+        h3 {
+            margin: 0;
+        }
+    }
+
+    .panel-body {
+        padding: 25px;
+    }
+}
+
+.auth-form {
+
+    .form-group {
+        position: relative;
+    }
+
+    .form-control {
+        padding-left: 30px;
+    }
+
+    .fa {
+        position: absolute;
+        left: 0;
+        padding: 10px 10px;
+    }
+
+    .btn {
+        margin-top: 30px;
+    }
+}
+
+.btn {
+    @include border-radius(0px);
+}
+
+.form-control {
+    @include border-radius(0px);
+}
+
+.form-control:focus {
+    border-color: $brand-color;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.has-error .form-control,
+.has-error .form-control:focus,
+.has-error .form-control:hover {
+    border-color: $danger-color;
+}
+
+.alert-danger {
+    color: white;
+    background-color: $danger-color;
+    border: 0;
+}
+
+.alert-success {
+    color: white;
+    background-color: $success-color;
+    border: 0;
+    margin-bottom: 0;
+}
+
+.errorlist {
+    list-style: none;
+    padding: 0;
 }
 
 /* =============================================================
@@ -69,7 +164,7 @@ body {
         line-height: 30px;
         padding: 15px 15px 15px 15px;
         margin-right: 20px;
-        background-color: rgba(115, 115, 115, 0.2);
+        background-color: $bg-grey;
         -webkit-transition: all .3s linear;
         -moz-transition: all .3s linear;
         transition: all .3s linear;
@@ -84,7 +179,7 @@ body {
     .navbar-nav > li > {
 
         a {
-            color: $dark-grey;
+            color: $text-grey;
             padding-top: 20px;
             padding-bottom: 5px;
             margin-bottom: 15px;

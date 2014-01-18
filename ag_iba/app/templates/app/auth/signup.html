@@ -10,27 +10,45 @@
         <div class="col-md-4 col-sm-4"></div>
         <div class="col-md-4 col-sm-4">
             <p>{{form.non_field_errors}}</p>
-            <form role="form" action="{% url 'signup' %}" method="POST">
-                {% csrf_token %}
-                <h2 class="lead text-center">Criar nova conta</h2>
-                <hr>
-                <div class="form-group {% if form.email.errors %}has-error{% endif %}">
-                    <input name="email" type="email" class="form-control" placeholder="Email" value="{{form.email.value}}" autocomplete="off" required autofocus>
-                    <span class="help-block">{{form.errors.email}}</span>
-                </div>
-                <div class="form-group {% if form.username.errors %}has-error{% endif %}">
-                    <input name="username" type="text" class="form-control" placeholder="Username" value="{{form.username.value}}" required>
-                    <span class="help-block">{{form.errors.username}}</span>
-                </div>
-                <div class="form-group {% if form.password2.errors %}has-error{% endif %}">
-                    <input name="password1" type="password" class="form-control" placeholder="Password" required>
-                </div>
-                <div class="form-group {% if form.password2.errors %}has-error{% endif %}">
-                    <input name="password2" type="password" class="form-control" placeholder="Confirm password" required>
-                    <span class="help-block">{{form.errors.password2}}</span>
 
-                <button type="submit" class="btn btn-success btn-block">Criar conta</button>
-            </form>
+            <div class="panel panel-default auth-panel">
+                <div class="panel-heading"><h3 class="text-center">Criar nova conta</h3 class="text-center"></div>
+                <div class="panel-body">
+                    {% if status %}
+                    <div class="alert alert-success">
+                        A tua conta foi criada com sucesso! Pede ao administrador que a ative para poderes entrar na aplicação.
+                    </div>
+                    
+                    {% else %}
+                    <form role="form" class="auth-form" action="{% url 'signup' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group {% if form.email.errors %}has-error{% endif %}">
+                            <i class="fa fa-envelope"></i>
+                            <input name="email" type="email" class="form-control" placeholder="Email" value="{{form.email.value}}" autocomplete="off" required autofocus>
+                            <span class="help-block">{{form.errors.email}}</span>
+                        </div>
+                        <div class="form-group {% if form.username.errors %}has-error{% endif %}">
+                            <i class="fa fa-user"></i>
+                            <input name="username" type="text" class="form-control" placeholder="Username" value="{{form.username.value}}" required>
+                            <span class="help-block">{{form.errors.username}}</span>
+                        </div>
+                        <div class="form-group {% if form.password2.errors %}has-error{% endif %}">
+                            <i class="fa fa-key"></i>
+                            <input name="password1" type="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <div class="form-group {% if form.password2.errors %}has-error{% endif %}">
+                            <i class="fa fa-lock"></i>
+                            <input name="password2" type="password" class="form-control" placeholder="Confirm password" required>
+                            <span class="help-block">{{form.errors.password2}}</span>
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-block">Criar conta</button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+
+            
         </div>
         <div class="col-md-4 col-sm-4"></div>
     </div> <!-- /.row -->
