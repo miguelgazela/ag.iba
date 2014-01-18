@@ -32,10 +32,10 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         {% if user.is_authenticated %}
-                        <li><a href="#">Clientes</a></li>
-                        <li><a href="#">Adicionar cliente</a></li>
-                        <li><a href="#">Impostos</a></li>
-                        <li><a href="#">Adicionar imposto</a></li>
+                        <li><a href="{% url 'clients' %}"><i class="fa fa-users"></i> CLIENTES</a></li>
+                        <li><a href="{% url 'add_client' %}"><i class="fa fa-plus-square"></i> NOVO CLIENTE</a></li>
+                        <li><a href="{% url 'taxes' %}"><i class="fa fa-list-alt"></i>  IMPOSTOS</a></li>
+                        {# <li><a href="#">NOVO IMPOSTO</a></li> #}
                         {% endif %}
                     </ul>
 

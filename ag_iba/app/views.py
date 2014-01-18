@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from app.forms import UserCreationForm
+from app.forms import ClientForm
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import login as auth_login
 from django.http import HttpResponse
@@ -12,6 +13,7 @@ from django.http import HttpResponse
 def index(request):
     return redirect('taxes')
 
+# Auth Views -->
 
 def login(request):
     if request.method == 'POST':
@@ -43,7 +45,7 @@ def signup(request):
         if user_form.is_valid():
             username = user_form.clean_username()
             password = user_form.clean_password2()
-            user = user_form.save()
+            user = user_form.save(commit=False)
             user.is_active = False
             user.save()
             return render(request, 'app/auth/signup.html',
@@ -53,6 +55,44 @@ def signup(request):
                 {'form': user_form})
 
 
+# <-- /. Auth Views
+
+
+# Taxes Views -->
+
 @login_required
 def taxes(request, sort='all'):
     return render(request, 'app/taxes/list.html')
+
+@login_required
+def add_tax(request):
+    return HttpResponse('Add Tax')
+
+# <-- /. Taxes Views
+
+
+# Clients Views -->
+
+@login_required
+def clients(request, sort='all'):
+    return HttpResponse("List clients")
+
+@login_required
+def client(request, client_id):
+    return HttpResponse("Detail Client of client with id {0}".format(client_id))
+
+@login_required
+def add_client(request):
+    if request.method == 'GET':
+        return render(request, 'app/clients/add.html')
+    elif request.method == 'POST':
+        client_form = ClientForm(request.POST)
+        if client_form.is_valid():
+            client = client_form.save(commit=False)
+            client.from_home = request.POST.get('client_type') == 'home'
+            client.save()
+            return redirect('client', client_id=client.id)
+        else:
+            return HttpResponse('the info was not valid')
+
+

@@ -10,7 +10,13 @@ urlpatterns = patterns('',
     url(r'^logout$', views.logout, name="logout"),
 
     # taxes urls
-    url(r'^taxes$', views.taxes, name="taxes"),
-    url(r'^taxes/(?P<sort>[a-z]{1,})/$', views.taxes, name="taxes"),
+    url(r'^impostos$', views.taxes, name="taxes"),
+    url(r'^impostos/novo$', views.add_tax, name="add_tax"),
+    url(r'^imposts/(?P<sort>[a-z]{1,})/$', views.taxes, name="taxes"),
+
+    # clients urls
+    url(r'^clientes$', views.clients, name="clients"),
+    url(r'^clientes/(?P<client_id>\d+)$', views.client, name="client"),
+    url(r'^clientes/novo$', views.add_client, name="add_client"),
 )
 
