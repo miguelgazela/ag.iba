@@ -1,0 +1,33 @@
+{% extends "app/base.html" %}
+
+{% block title %}Ag.Iba - Login{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-4 col-sm-4"></div>
+        <div class="col-md-4 col-sm-4">
+            <p>{{form.non_field_errors}}</p>
+            <form role="form" action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <h2 class="lead text-center">Login</h2>
+                <hr>
+                <div class="form-group {% if form.non_field_errors %}has-error{% endif %}">
+                    <input type="text" name="username" class="form-control" id="input_username" placeholder="Username" required autofocus value="{{ form.username.value }}">
+                </div>
+                <div class="form-group {% if form.non_field_errors %}has-error{% endif %}">
+                    <input type="password" name="password" class="form-control" id="input_password" placeholder="Password">
+                    <span class="help-block">{{ form.non_field_errors }}</span>
+                </div>
+
+                <button type="submit" class="btn btn-success btn-block">Login</button>
+            </form>
+        </div>
+        <div class="col-md-4 col-sm-4"></div>
+    </div> <!-- /.row -->
+
+</div>
+
+{% endblock %}

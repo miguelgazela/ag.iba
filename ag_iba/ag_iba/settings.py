@@ -26,6 +26,9 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['localhost']
 
+# URL of the login page.
+LOGIN_URL = 'login'
+
 
 # Application definition
 
