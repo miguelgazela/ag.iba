@@ -16,42 +16,50 @@
 </head>
 
 <body>
-    
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Ag.Iba</a>
+    <div id="wrap">
+        <!-- Fixed navbar -->
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Ag.Iba</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        {% if user.is_authenticated %}
+                        <li><a href="#">Clientes</a></li>
+                        <li><a href="#">Adicionar cliente</a></li>
+                        <li><a href="#">Impostos</a></li>
+                        <li><a href="#">Adicionar imposto</a></li>
+                        {% endif %}
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> <strong>Logout</strong></a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> <strong>Login</strong></a></li>
+                        <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> <strong>Criar conta</strong></a></li>
+                        {% endif %}
+                    </ul>
+
+                </div><!--/.nav-collapse -->
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    {% if user.is_authenticated %}
-                    <li><a href="#">Clientes</a></li>
-                    <li><a href="#">Adicionar cliente</a></li>
-                    <li><a href="#">Impostos</a></li>
-                    <li><a href="#">Adicionar imposto</a></li>
-                    {% endif %}
-                </ul>
+        </div>
 
-                <ul class="nav navbar-nav navbar-right">
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> <strong>Logout</strong></a></li>
-                    {% else %}
-                    <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> <strong>Login</strong></a></li>
-                    <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> <strong>Criar conta</strong></a></li>
-                    {% endif %}
-                </ul>
+        {% block content %}{% endblock %}
 
-            </div><!--/.nav-collapse -->
+    </div> <!-- /.wrap -->
+    
+    <div id="footer">
+        <div class="container">
+            <p class="text-muted">Made by <a href="https://twitter.com/miguelgazela">@miguelgazela</a> © {% now "Y" %}</p>
         </div>
     </div>
-
-    {% block content %}{% endblock %}
     
     <!-- Placed at the end of the document so the pages load faster -->
     {% load staticfiles %}

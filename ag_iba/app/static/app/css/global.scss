@@ -1,19 +1,51 @@
 // color schemes
 
-$dark_grey: #737373;
-$light_grey: #ddd;
-$brand_color: #3acf93;
-$brand_color_highlight: #8dee43;
+$dark-grey: #737373;
+$light-grey: #ddd;
+$brand-color: #3acf93;
+$brand-color-highlight: #8dee43;
 
+/* =============================================================
+   author custom styles
+   ============================================================= */
 
 body {
-    background-color: white;
-    padding-top: 80px;
-    color: $dark_grey;
+    color: $dark-grey;
 }
 
 hr {
-    border-top-color: $light_grey;
+    border-top-color: $light-grey;
+}
+
+/* =============================================================
+   sticky footer styles
+   ============================================================= */
+
+html,
+body {
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+    min-height: 100%;
+    height: auto;
+    /* Negative indent footer by its height */
+    margin: 0 auto -50px;
+    /* Pad bottom by footer height */
+    padding: 0 0 50px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+    border-top: 1px solid $light-grey;
+    height: 50px;
+    padding-top: 10px;
+}
+
+#wrap > .container {
+    padding-top: 80px;
 }
 
 /* =============================================================
@@ -26,10 +58,10 @@ hr {
 
 .navbar-default {
     background-color: white;
-    border-bottom: 1px solid $light_grey;
+    border-bottom: 1px solid $light-grey;
 
     .navbar-brand {
-        color: $brand_color;
+        color: $brand-color;
         font-weight: bold;
         color: #3acf93;
         text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
@@ -45,14 +77,14 @@ hr {
 
     .navbar-brand:hover {
         text-decoration: none;
-        color: $brand_color_highlight;
+        color: $brand-color-highlight;
         text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
     }
 
     .navbar-nav > li > {
 
         a {
-            color: $dark_grey;
+            color: $dark-grey;
             padding-top: 20px;
             padding-bottom: 5px;
             margin-bottom: 15px;
@@ -60,9 +92,9 @@ hr {
 
         a:hover,
         a:focus {
-            color: $brand_color;
+            color: $brand-color;
             margin-bottom: 14px;
-            border-bottom: 1px solid $brand_color;
+            border-bottom: 1px solid $brand-color;
         }
         
     }
