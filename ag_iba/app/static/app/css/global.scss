@@ -27,8 +27,24 @@ $success-color: #2ecc71;
    author custom styles
    ============================================================= */
 
-body {
+body,
+.btn-default {
     color: $text-grey;
+}
+
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
+    color: $brand-color;
+    border-color: $brand-color;
+    background-color: white;
+}
+
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus {
+    background-color: $brand-color;
 }
 
 hr {
@@ -87,6 +103,7 @@ hr {
 
 .form-control {
     @include border-radius(0px);
+
 }
 
 .form-control:focus {
@@ -119,6 +136,7 @@ hr {
     padding: 0;
 }
 
+
 /* =============================================================
    sticky footer styles
    ============================================================= */
@@ -149,6 +167,7 @@ body {
 #wrap > .container {
     padding-top: 80px;
 }
+
 
 /* =============================================================
    navbar custom styles
@@ -203,4 +222,36 @@ body {
 }
 
 
+/* =============================================================
+   navbar custom styles
+   ============================================================= */
+
+.sidebar {
+    .form-group {
+        width: 100%;
+        position: relative;
+    }
+
+    .btn-group {
+        width: 100%;
+
+        .btn {
+            width: 100%;
+        }
+    }
+
+    .btn-group:not(:first-of-type) {
+        margin-top: 10px;
+    }
+
+    .form-control {
+        padding-left: 30px;
+    }
+
+    .fa {
+        position: absolute;
+        left: 0;
+        padding: 10px 10px;
+    }    
+}
 

@@ -32,11 +32,9 @@
                                         acção <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a></li>
+                                        <li><a href="#"><i class="fa fa-user"></i> Ver Perfil</a></li>
+                                        <li><a href="#"><i class="fa fa-user"></i> Adicionar Imposto</a></li>
+                                        <li><a href="#"><i class="fa fa-user"></i> Editar Info</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -53,8 +51,9 @@
         <div class="col-md-3 sidebar">
             <form class="form-inline" role="form" action="#">
                 <div class="form-group">
+                    <i class="fa fa-search"></i>
                     <label class="sr-only" for="exampleInputEmail2">Search</label>
-                    <input type="search" class="form-control" id="exampleInputEmail2" placeholder="Search">
+                    <input type="search" class="form-control" id="local-search" placeholder="Pesquisa">
                 </div>
             </form>
             <hr>
@@ -63,15 +62,18 @@
                     Aplicar a seleccionados <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#"><i class="fa fa-user"></i> Ver Perfil</a></li>
+                    <li><a href="#"><i class="fa fa-user"></i> Adicionar Imposto</a></li>
+                    <li><a href="#"><i class="fa fa-user"></i> Editar Info</a></li>
+                    {# <li class="divider"></li>
+                    <li><a href="#"><i class="fa fa-user"></i></a></li> #}
                 </ul>
             </div>
-            <button type="button" class="btn btn-success btn-sidebar btn-separate">Adicionar imposto</button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-success btn-sidebar">Novo Imposto</button>
+            </div>
             <hr>
+            {% if not_real_variable %}
             <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading"><strong>Actividade recente</strong></div>            
@@ -98,6 +100,7 @@
                     </li>
                 </ul>
             </div>
+            {% endif %}
         </div>
     </div>
 </div> <!-- /container -->
