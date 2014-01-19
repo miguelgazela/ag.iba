@@ -33,8 +33,9 @@
                     <ul class="nav navbar-nav">
                         {% if user.is_authenticated %}
                         <li><a href="{% url 'clients' %}"><i class="fa fa-users"></i> CLIENTES</a></li>
-                        <li><a href="{% url 'add_client' %}"><i class="fa fa-plus-square"></i> NOVO CLIENTE</a></li>
                         <li><a href="{% url 'taxes' %}"><i class="fa fa-list-alt"></i>  IMPOSTOS</a></li>
+                        <li><a href="{% url 'add_client' %}"><i class="fa fa-plus-square"></i> NOVO CLIENTE</a></li>
+                        
                         {# <li><a href="#">NOVO IMPOSTO</a></li> #}
                         {% endif %}
                     </ul>
@@ -63,6 +64,7 @@
     </div>
     
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     {% load staticfiles %}
     <script src="{% static 'app/js/build/production.min.js' %}"></script>
 </body>

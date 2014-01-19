@@ -2,11 +2,12 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from app.forms import UserCreationForm
-from app.forms import ClientForm
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import login as auth_login
 from django.http import HttpResponse
+from app.forms import UserCreationForm
+from app.forms import ClientForm
+from app.models import Client
 
 
 @login_required
@@ -75,7 +76,9 @@ def add_tax(request):
 
 @login_required
 def clients(request, sort='all'):
-    return HttpResponse("List clients")
+    clients = Client.objects.all()
+    return render(request, 'app/clients/list.html',
+        {'list_clients': clients})
 
 @login_required
 def client(request, client_id):
