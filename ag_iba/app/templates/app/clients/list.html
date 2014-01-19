@@ -23,7 +23,7 @@
                         {% for client in list_clients %}
                         <tr>
                             <td>{{client.id}}</td>
-                            <td><a href="#">{{client.name}}</a></td>
+                            <td><a href="{% url 'client' client_id=client.id %}">{{client.name}}</a></td>
                             <td>{{client.nif}}</td>
                             <td>{{client.tax_set.count}}</td>
                             <td>
@@ -32,9 +32,11 @@
                                         acção <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#"><i class="fa fa-user"></i> Ver Perfil</a></li>
-                                        <li><a href="#"><i class="fa fa-user"></i> Adicionar Imposto</a></li>
-                                        <li><a href="#"><i class="fa fa-user"></i> Editar Info</a></li>
+                                        <li><a href="{% url 'client' client_id=client.id %}"><i class="fa fa-user"></i> Ver Perfil</a></li>
+                                        <li><a href="#"><i class="fa fa-plus-square"></i> Adicionar Imposto</a></li>
+                                        <li><a href="#"><i class="fa fa-edit"></i> Editar Info</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href=""><i class="fa fa-trash-o"></i> Remover Cliente</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -58,19 +60,12 @@
             </form>
             <hr>
             <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle btn-sidebar" data-toggle="dropdown" disabled="disabled">
-                    Aplicar a seleccionados <span class="caret"></span>
+                <button type="button" class="btn btn-default btn-sidebar" disabled="disabled">
+                    Remover Seleccionados
                 </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#"><i class="fa fa-user"></i> Ver Perfil</a></li>
-                    <li><a href="#"><i class="fa fa-user"></i> Adicionar Imposto</a></li>
-                    <li><a href="#"><i class="fa fa-user"></i> Editar Info</a></li>
-                    {# <li class="divider"></li>
-                    <li><a href="#"><i class="fa fa-user"></i></a></li> #}
-                </ul>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-success btn-sidebar">Novo Imposto</button>
+                <button type="button" class="btn btn-success btn-sidebar" onclick="window.location = '{% url 'add_client' %}';">Novo Cliente</button>
             </div>
             <hr>
             {% if not_real_variable %}

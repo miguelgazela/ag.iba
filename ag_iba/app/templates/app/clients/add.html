@@ -10,7 +10,6 @@
         <div class="col-sm-3"></div>
 
         <div class="col-sm-6">
-            <p>{{form.non_field_errors}}</p>
 
             <div class="panel panel-default form-panel">
                 <div class="panel-heading"><h3 class="text-center">Novo cliente</h3 class="text-center"></div>
@@ -44,7 +43,7 @@
                         </div>
                         <div class="form-group {% if form.postal.errors %}has-error{% endif %}">
                             <i class="fa fa-qrcode"></i>
-                            <input name="postal" pattern="(\d{4}([\-]\d{3})?)" type="text" class="form-control" placeholder="Código postal" value="{{form.postal.value}}" required>
+                            <input name="postal" pattern="(\d{4}([\-]\d{3})?)" type="text" class="form-control" placeholder="Código postal, Ex.: 4420 ou 4420-164" value="{{form.postal.value}}" required>
                             <span class="help-block">{{form.errors.postal}}</span>
                         </div>
                         {% if user.is_superuser %}

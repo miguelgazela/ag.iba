@@ -96,6 +96,7 @@ def add_client(request):
             client.save()
             return redirect('client', client_id=client.id)
         else:
-            return HttpResponse('the info was not valid')
+            return render(request, 'app/clients/add.html',
+                {'form': client_form})
 
 

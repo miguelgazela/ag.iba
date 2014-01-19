@@ -42,6 +42,10 @@ body,
     background-color: white;
 }
 
+.dropdown-menu>li>a {
+    color: $text-grey;
+}
+
 .dropdown-menu>li>a:hover,
 .dropdown-menu>li>a:focus {
     background-color: $brand-color;
@@ -49,6 +53,16 @@ body,
 
 hr {
     border-top-color: $light-grey;
+}
+
+a {
+    color: $brand-color;
+
+    &:hover,
+    &:focus {
+        color: $brand-color;
+        text-decoration: underline;
+    }
 }
 
 .form-panel {
@@ -161,7 +175,7 @@ body {
 #footer {
     border-top: 1px solid $light-grey;
     height: 50px;
-    padding-top: 10px;
+    padding-top: 15px;
 }
 
 #wrap > .container {
@@ -209,21 +223,20 @@ body {
             padding-top: 20px;
             padding-bottom: 5px;
             margin-bottom: 15px;
-        }
 
-        a:hover,
-        a:focus {
-            color: $brand-color;
-            margin-bottom: 14px;
-            border-bottom: 1px solid $brand-color;
+            &:hover,
+            &:focus {
+                color: $brand-color;
+                margin-bottom: 14px;
+                border-bottom: 1px solid $brand-color;
+            }
         }
-        
     }
 }
 
 
 /* =============================================================
-   navbar custom styles
+   sidebar custom styles
    ============================================================= */
 
 .sidebar {
