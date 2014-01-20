@@ -70,8 +70,11 @@ $(document).ready(function() {
                 }
             });
 
-            // show a warning when no client is visible
-            //console.log($('.client_row:visible').length);
+            if($('.client_row:visible').length === 0) {
+                $('table + p').removeClass('hidden');
+            } else {
+                $('table + p').addClass('hidden');
+            }
         },
         250,
         true
