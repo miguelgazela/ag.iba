@@ -1,3 +1,60 @@
+/*
+bindWithDelay jQuery plugin
+Author: Brian Grinstead
+MIT license: http://www.opensource.org/licenses/mit-license.php
+
+http://github.com/bgrins/bindWithDelay
+http://briangrinstead.com/files/bindWithDelay
+
+Usage:
+    See http://api.jquery.com/bind/
+    .bindWithDelay( eventType, [ eventData ], handler(eventObject), timeout, throttle )
+
+Examples:
+    $("#foo").bindWithDelay("click", function(e) { }, 100);
+    $(window).bindWithDelay("resize", { optional: "eventData" }, callback, 1000);
+    $(window).bindWithDelay("resize", callback, 1000, true);
+*/
+
+(function($) {
+
+$.fn.bindWithDelay = function( type, data, fn, timeout, throttle ) {
+
+    if ( $.isFunction( data ) ) {
+        throttle = timeout;
+        timeout = fn;
+        fn = data;
+        data = undefined;
+    }
+
+    // Allow delayed function to be removed with fn in unbind function
+    fn.guid = fn.guid || ($.guid && $.guid++);
+
+    // Bind each separately so that each element has its own delay
+    return this.each(function() {
+
+        var wait = null;
+
+        function cb() {
+            var e = $.extend(true, { }, arguments[0]);
+            var ctx = this;
+            var throttler = function() {
+                wait = null;
+                fn.apply(ctx, [e]);
+            };
+
+            if (!throttle) { clearTimeout(wait); wait = null; }
+            if (!wait) { wait = setTimeout(throttler, timeout); }
+        }
+
+        cb.guid = fn.guid;
+
+        $(this).bind(type, data, cb);
+    });
+};
+
+})(jQuery);
+
 /**
 * bootstrap.js v3.0.0 by @fat and @mdo
 * Copyright 2013 Twitter Inc.
@@ -42,6 +99,47 @@ $(document).ready(function() {
     //     );
     // });
 });
+
+// // search user input handler
+//     $("#find-user-input").bindWithDelay(
+//         "keyup",
+//         function() {
+//             var query = $(this).val().trim().toLowerCase();
+//             $('.user').each(function(){
+//                 var username = $(this).find('.media-heading a').html().toLowerCase();
+//                 var pos = username.indexOf(query);
+//                 if (pos != -1) {
+//                     $(this).show();
+//                 } else {
+//                     $(this).hide();
+//                 }
+//             });
+//         },
+//         250, true);
+
+(function($){
+    $('#local-search-clients').bindWithDelay(
+        "keyup",
+        function() {
+            var query = $(this).val().trim().toLowerCase();
+            $('.client_row').each(function(){
+                var $row = $(this);
+                var client_name = $row.find('td>a').text().trim().toLowerCase();
+
+                if(client_name.indexOf(query) !== -1) {
+                    $row.show();
+                } else {
+                    $row.hide();
+                }
+            });
+
+            // show a warning when no client is visible
+            //console.log($('.client_row:visible').length);
+        },
+        250,
+        true
+    );
+})(jQuery)
 
 // function validateInput(value, pattern, object) {
 //     var OK = pattern.exec(value);

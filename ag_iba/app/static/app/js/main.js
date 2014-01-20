@@ -37,6 +37,47 @@ $(document).ready(function() {
     // });
 });
 
+// // search user input handler
+//     $("#find-user-input").bindWithDelay(
+//         "keyup",
+//         function() {
+//             var query = $(this).val().trim().toLowerCase();
+//             $('.user').each(function(){
+//                 var username = $(this).find('.media-heading a').html().toLowerCase();
+//                 var pos = username.indexOf(query);
+//                 if (pos != -1) {
+//                     $(this).show();
+//                 } else {
+//                     $(this).hide();
+//                 }
+//             });
+//         },
+//         250, true);
+
+(function($){
+    $('#local-search-clients').bindWithDelay(
+        "keyup",
+        function() {
+            var query = $(this).val().trim().toLowerCase();
+            $('.client_row').each(function(){
+                var $row = $(this);
+                var client_name = $row.find('td>a').text().trim().toLowerCase();
+
+                if(client_name.indexOf(query) !== -1) {
+                    $row.show();
+                } else {
+                    $row.hide();
+                }
+            });
+
+            // show a warning when no client is visible
+            //console.log($('.client_row:visible').length);
+        },
+        250,
+        true
+    );
+})(jQuery)
+
 // function validateInput(value, pattern, object) {
 //     var OK = pattern.exec(value);
 
