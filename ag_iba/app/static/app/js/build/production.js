@@ -117,6 +117,8 @@ $(document).ready(function() {
 //         },
 //         250, true);
 
+
+// local search for clients
 (function($){
     $('#local-search-clients').bindWithDelay(
         "keyup",

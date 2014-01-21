@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout as auth_logout
@@ -82,7 +83,9 @@ def clients(request, sort='all'):
 
 @login_required
 def client(request, client_id):
-    return HttpResponse("Detail Client of client with id {0}".format(client_id))
+    client = get_object_or_404(Client, pk=client_id)
+    return render(request, 'app/clients/view.html',
+        {'client': client})
 
 @login_required
 def add_client(request):

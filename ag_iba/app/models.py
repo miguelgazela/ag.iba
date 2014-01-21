@@ -22,3 +22,10 @@ class Tax(models.Model):
     plate = models.CharField(max_length=8)
     plate_date = models.DateField()
     limit_date = models.DateField(default=datetime.now())
+
+    @property
+    def days_left(self):
+        # temporary
+        return 10
+
+

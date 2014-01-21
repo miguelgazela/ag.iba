@@ -1,42 +1,59 @@
 {% extends "app/base.html" %}
 
-{% block title %}Ag.Iba - Clientes{% endblock %}
+{% block title %}Ag.Iba - {{client.name}}{% endblock %}
 
 {% block content %}
 
-<div class="container">
+<div class="container" data-client-id="{{client.id}}">
     <div class="row">
         <div class="col-md-9">
+
+            <h3>{{client.name}}</h3>
+            <h4>NIF/NIPC: {{client.nif}}</h4>
+            <address>
+                {{client.address}}
+                <br>
+                {{client.city}}
+                <br>
+                {{client.local}}
+                <br>
+                {{client.postal}}
+            </address>
+
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nome</th>
-                            <th>NIF/NIPC</th>
-                            <th>Viaturas</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Matrícula</th>
+                            <th>Data Matrícula</th>
+                            <th>Data Limite</th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for client in list_clients %}
-                        <tr class="client_row">
-                            <td>{{client.id}}</td>
-                            <td><a href="{% url 'client' client_id=client.id %}">{{client.name}}</a></td>
-                            <td>{{client.nif}}</td>
-                            <td>{{client.tax_set.count}}</td>
+                        {% for tax in client.tax_set.all %}
+                        <tr>
+                            <td>{{tax.id}}</td>
+                            <td>{{tax.brand}}</td>
+                            <td>{{tax.model}}</td>
+                            <td>{{tax.plate}}</td>
+                            <td>{{tax.plate_date}}</td>
+                            <td>{{tax.limit_date}} <span class="badge badge-danger">{{tax.days_left}}</span></td>
                             <td>
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    <button type="button" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown">
                                         acção <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{% url 'client' client_id=client.id %}"><i class="fa fa-user"></i> Ver Perfil</a></li>
-                                        <li><a href="#"><i class="fa fa-plus-square"></i> Adicionar Imposto</a></li>
-                                        <li><a href="#"><i class="fa fa-edit"></i> Editar Info</a></li>
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
                                         <li class="divider"></li>
-                                        <li><a href=""><i class="fa fa-trash-o"></i> Remover Cliente</a></li>
+                                        <li><a href="#">Separated link</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -47,7 +64,7 @@
                         {% endfor %}
                     </tbody>
                 </table>
-                <p class="text-center hidden">Não há clientes que correspondam a essa pesquisa.</p class="text-center hidden">
+                <p class="text-center hidden">Não há viaturas que correspondam a essa pesquisa.</p class="text-center hidden">
             </div>
         </div>
 
@@ -55,18 +72,31 @@
             <form class="form-inline" role="form" action="#">
                 <div class="form-group">
                     <i class="fa fa-search"></i>
-                    <label class="sr-only" for="">Search</label>
-                    <input type="search" class="form-control" id="local-search-clients" placeholder="Pesquisa Cliente">
+                    <label class="sr-only" for="exampleInputEmail2">Pesquisa Viatura</label>
+                    <input type="text" class="form-control" id="" placeholder="Pesquisa Viatura">
                 </div>
             </form>
             <hr>
             <div class="btn-group">
-                <button type="button" class="btn btn-default btn-sidebar" disabled="disabled">
-                    Remover Seleccionados
-                </button>
+                <button type="button" class="btn btn-default btn-sidebar" disabled="disabled">Editar Cliente</button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-success btn-sidebar" onclick="window.location = '{% url 'add_client' %}';">Novo Cliente</button>
+                <button type="button" class="btn btn-default dropdown-toggle btn-sidebar" data-toggle="dropdown" disabled="disabled">
+                    Aplicar a seleccionados <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-success btn-sidebar">Adicionar Imposto a Cliente</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger btn-sidebar">Eliminar Cliente</button>
             </div>
             <hr>
             {% if not_real_variable %}
