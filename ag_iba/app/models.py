@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
+from datetime import date
 
 class Client(models.Model):
     name = models.CharField(max_length=160)
@@ -23,9 +24,41 @@ class Tax(models.Model):
     plate_date = models.DateField()
     limit_date = models.DateField(default=datetime.now())
 
+    def __unicode__(self):
+        return "Cliente: {client} - {brand} {model}".format(
+            client=self.client.name, 
+            brand=self.brand,
+            model=self.model
+        )
+
     @property
     def days_left(self):
-        # temporary
-        return 10
+        limit = date(
+            self.limit_date.year, 
+            self.limit_date.month,
+            self.limit_date.day
+        )
+        diff = limit - date.today()
+        
+        # when the limit is overdue
+        if diff.days < 0:
+            return 0
+        return diff.days
+
+    @property
+    def this_month(self):
+        today = date.today()
+        if today.year == self.limit_date.year:
+            return today.month == self.limit_date.month
+
+    @property
+    def next_month(self):
+        today = date.today()
+        if today.year == self.limit_date.year:
+            return self.limit_date.month == (today.month + 1)
+
+
+
+
 
 
