@@ -9,6 +9,7 @@ $brand-color: #3acf93;
 $brand-color-highlight: #8dee43;
 $danger-color: #e74c3c;
 $success-color: #2ecc71;
+$warning-color: #f0ad4e;
 
 /* =============================================================
    mixins
@@ -150,6 +151,40 @@ a {
     padding: 0;
 }
 
+.dropdown-danger li>a {
+    &:hover,
+    &:focus {
+        background-color: $danger-color;
+    }
+}
+
+.dropdown-warning li>a {
+    &:hover,
+    &:focus {
+        background-color: $warning-color;
+    }
+}
+
+
+.label-danger,
+.btn-danger,
+.badge-danger {
+    background-color: $danger-color;
+}
+
+.badge-warning {
+    background-color: $warning-color;
+}
+
+.col-md-9>h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.col-md-9>hr {
+    margin-top: 10px;
+}
+
 
 /* =============================================================
    sticky footer styles
@@ -267,4 +302,3 @@ body {
         padding: 10px 10px;
     }    
 }
-

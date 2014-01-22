@@ -16,6 +16,14 @@ class Client(models.Model):
     def __unicode__(self):
         return self.name
 
+    @property
+    def has_taxes_this_month(self):
+        taxes = self.tax_set.all()
+        for tax in taxes:
+            if tax.this_month():
+                return True
+        return False
+
 class Tax(models.Model):
     client = models.ForeignKey(Client)
     brand = models.CharField(max_length=100)
@@ -31,7 +39,6 @@ class Tax(models.Model):
             model=self.model
         )
 
-    @property
     def days_left(self):
         limit = date(
             self.limit_date.year, 
@@ -45,13 +52,11 @@ class Tax(models.Model):
             return 0
         return diff.days
 
-    @property
     def this_month(self):
         today = date.today()
         if today.year == self.limit_date.year:
             return today.month == self.limit_date.month
 
-    @property
     def next_month(self):
         today = date.today()
         if today.year == self.limit_date.year:

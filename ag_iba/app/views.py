@@ -9,6 +9,7 @@ from django.http import HttpResponse
 from app.forms import UserCreationForm
 from app.forms import ClientForm
 from app.models import Client
+from app.models import Tax
 
 
 @login_required
@@ -64,7 +65,9 @@ def signup(request):
 
 @login_required
 def taxes(request, sort='all'):
-    return render(request, 'app/taxes/list.html')
+    taxes = Tax.objects.all().order_by('limit_date')
+    return render(request, 'app/taxes/list.html',
+        {'list_taxes': taxes})
 
 @login_required
 def add_tax(request):
@@ -77,7 +80,7 @@ def add_tax(request):
 
 @login_required
 def clients(request, sort='all'):
-    clients = Client.objects.all()
+    clients = Client.objects.all().order_by('-name')
     return render(request, 'app/clients/list.html',
         {'list_clients': clients})
 

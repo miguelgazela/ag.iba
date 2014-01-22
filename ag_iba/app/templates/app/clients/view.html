@@ -7,8 +7,7 @@
 <div class="container" data-client-id="{{client.id}}">
     <div class="row">
         <div class="col-md-9">
-
-            <h3>{{client.name}}</h3>
+            <h3><i class="fa fa-user"></i> {{client.name}}</h3>
             <h4>NIF/NIPC: {{client.nif}}</h4>
             <address>
                 {{client.address}}
@@ -50,7 +49,7 @@
                                     <button type="button" class="btn {% if tax.this_month %}btn-danger{% elif tax.next_month %}btn-warning{% else %}btn-default{% endif %} btn-xs dropdown-toggle" data-toggle="dropdown">
                                         acção <span class="caret"></span>
                                     </button>
-                                    <ul class="dropdown-menu {% if tax.this_month %}danger{% elif tax.next_month %}warning{% else %}default{% endif %}" role="menu">
+                                    <ul class="dropdown-menu {% if tax.this_month %}dropdown-danger{% elif tax.next_month %}dropdown-warning{% else %}dropdown-default{% endif %}" role="menu">
                                         <li><a href="#"><i class="fa fa-check-square-o"></i> Pago</a></li>
                                         <li><a href="#"><i class="fa fa-square-o"></i> Não Pago</a></li>
                                         <li class="divider"></li>
@@ -70,6 +69,7 @@
         </div>
 
         <div class="col-md-3 sidebar">
+            
             <form class="form-inline" role="form" action="#">
                 <div class="form-group">
                     <i class="fa fa-search"></i>
