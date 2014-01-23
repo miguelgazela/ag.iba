@@ -26,8 +26,12 @@
                         <tr class="client_row">
                             {# <td>{{client.id}}</td> #}
                             <td>{% if user.is_superuser and client.from_home %}<i class="fa fa-home"></i>{% elif user.is_superuser %}<i class="fa fa-suitcase"></i>{% endif %} <a href="{% url 'client' client_id=client.id %}">{{client.name}}</a></td>
-                            <td>{{client.nif}} {{client.has_tax_this_month}}</td>
-                            <td>{{client.tax_set.count}}</td>
+                            <td>{{client.nif}}</td>
+                            <td>{{client.tax_set.count}}
+                            {% if client.has_taxes_this_month %}
+                             <i class="danger fa fa-exclamation-triangle" title="Tem impostos a pagar este mês"></i>
+                            {% endif %}
+                            </td>
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">

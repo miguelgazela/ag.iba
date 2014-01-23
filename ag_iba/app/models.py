@@ -1,22 +1,26 @@
+# -*- coding: utf-8 -*-
+
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
 from datetime import date
 
 class Client(models.Model):
-    name = models.CharField(max_length=160)
-    address = models.CharField(max_length=160)
-    local = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    postal = models.CharField(max_length=8)
-    nif = models.CharField(max_length=9)
+    name = models.CharField(max_length=160, verbose_name='Nome')
+    address = models.CharField(max_length=160, verbose_name="Morada")
+    local = models.CharField(max_length=100, verbose_name="Localidade")
+    city = models.CharField(max_length=100, verbose_name="Cidade")
+    postal = models.CharField(max_length=8, verbose_name="Código postal")
+    nif = models.CharField(max_length=9, unique=True, verbose_name="NIF/NIPC")
     added = models.DateTimeField(auto_now_add=True)
-    from_home = models.BooleanField(default=False, blank=True)
+    from_home = models.BooleanField(default=False, blank=True, verbose_name="Casa")
+
+    class Meta:
+        verbose_name = 'Cliente'
 
     def __unicode__(self):
         return self.name
 
-    @property
     def has_taxes_this_month(self):
         taxes = self.tax_set.all()
         for tax in taxes:
@@ -25,19 +29,22 @@ class Client(models.Model):
         return False
 
 class Tax(models.Model):
-    client = models.ForeignKey(Client)
-    brand = models.CharField(max_length=100)
-    model = models.CharField(max_length=100)
-    plate = models.CharField(max_length=8)
-    plate_date = models.DateField()
-    limit_date = models.DateField(default=datetime.now())
+    client = models.ForeignKey(Client, verbose_name="Cliente")
+    brand = models.CharField(max_length=100, verbose_name="Marca")
+    model = models.CharField(max_length=100, verbose_name="Modelo")
+    plate = models.CharField(max_length=8, verbose_name="Matrícula")
+    plate_date = models.DateField(verbose_name="Data Matrícula")
+    limit_date = models.DateField(default=datetime.now(), verbose_name="Data Limite de Pagamento")
+
+    class Meta:
+        verbose_name = "Imposto"
 
     def __unicode__(self):
-        return "Cliente: {client} - {brand} {model}".format(
-            client=self.client.name, 
+        return "{brand} {model}".format(
             brand=self.brand,
             model=self.model
         )
+        
 
     def days_left(self):
         limit = date(

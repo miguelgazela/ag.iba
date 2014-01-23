@@ -8,6 +8,7 @@ from django.contrib.auth import login as auth_login
 from django.http import HttpResponse
 from app.forms import UserCreationForm
 from app.forms import ClientForm
+from app.forms import TaxForm
 from app.models import Client
 from app.models import Tax
 
@@ -71,7 +72,21 @@ def taxes(request, sort='all'):
 
 @login_required
 def add_tax(request):
-    return HttpResponse('Add Tax')
+    if request.method == 'GET':
+        clients = Client.objects\
+            .extra(select={'lower_name':'lower(name)'})\
+            .order_by('lower_name')\
+            .values_list('name', 'id')
+        return render(request, 'app/taxes/add.html',
+            {'list_clients': clients})
+    else:
+        tax_form = TaxForm(request.POST)
+        if tax_form.is_valid():
+            tax = tax_form.save()
+            return HttpResponse('Tax added to database')
+        else:
+            return render(request, 'app/taxes/add.html',
+                {'form': tax_form})
 
 # <-- /. Taxes Views
 

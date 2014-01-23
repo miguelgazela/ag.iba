@@ -26,10 +26,16 @@
                         {% for tax in list_taxes %}
                         <tr>
                             {# <td>{{tax.id}}</td> #}
-                            <td><a href="#">{{tax.client.name}}</a></td>
+                            <td>{% if user.is_superuser and client.from_home %}<i class="fa fa-home"></i>{% elif user.is_superuser %}<i class="fa fa-suitcase"></i>{% endif %} <a href="{% url 'client' client_id=tax.client.id %}">{{tax.client.name}}</a></td>
                             <td>{{tax.brand}}</td>
                             <td>{{tax.plate}}</td>
-                            <td>{{tax.limit_date}} <span class="badge {% if tax.this_month %}badge-danger{% elif tax.next_month %}badge-warning{% else %}badge-default{% endif %}">{{tax.days_left}}</span></td>
+                            {% if tax.this_month %}
+                            <td>{{tax.limit_date}} <span class="badge badge-danger">{{tax.days_left}}</span></td>
+                            {% elif tax.next_month %}
+                            <td>{{tax.limit_date}} <span class="badge badge-warning">{{tax.days_left}}</span></td>
+                            {% else %}
+                            <td>{{tax.limit_date}}</td>
+                            {% endif %}
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn {% if tax.this_month %}btn-danger{% elif tax.next_month %}btn-warning{% else %}btn-default{% endif %} btn-xs dropdown-toggle" data-toggle="dropdown">

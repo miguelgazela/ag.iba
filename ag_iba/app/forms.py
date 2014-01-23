@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from app.models import Client
+from app.models import Tax
 import re
 
 class UserCreationForm(UserCreationForm):
@@ -43,3 +44,8 @@ class ClientForm(forms.ModelForm):
         if re.search(r'^\d{4}([\-]\d{3})?$', data):
             return data
         raise forms.ValidationError('This postal code is invalid')
+
+class TaxForm(forms.ModelForm):
+    class Meta:
+        model = Tax
+        fields = ['client', 'brand', 'model', 'plate', 'plate_date', 'limit_date']
