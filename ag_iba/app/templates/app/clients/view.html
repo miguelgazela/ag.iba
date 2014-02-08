@@ -51,7 +51,7 @@
                                     </button>
                                     <ul class="dropdown-menu {% if tax.this_month %}dropdown-danger{% elif tax.next_month %}dropdown-warning{% else %}dropdown-default{% endif %}" role="menu">
                                         <li><a href="#" onclick="return payTax(this, {{tax.id}}, 'clientes/{{client.id}}');"><i class="fa fa-check-square-o"></i> Pago</a></li>
-                                        <li><a href="#"><i class="fa fa-square-o"></i> Não Pago</a></li>
+                                        <li><a href="#" onclick="return cancelTax(this, {{tax.id}}, 'clientes/{{client.id}}');"><i class="fa fa-square-o"></i> Não Pago</a></li>
                                         <li class="divider"></li>
                                         <li><a href="#"><i class="fa fa-trash-o"></i> Eliminar Importo</a></li>
                                     </ul>

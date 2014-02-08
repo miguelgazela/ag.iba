@@ -22,5 +22,6 @@ urlpatterns = patterns('',
 
     # api urls
     url(r'^api/impostos/pagar/(?P<tax_id>\d+)$', views.pay_tax, name="pay_tax"),
+    url(r'^api/impostos/cancelar/(?P<tax_id>\d+)$', views.cancel_tax, name="cancel_tax"),
 )
 

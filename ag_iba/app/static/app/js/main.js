@@ -127,14 +127,28 @@ function payTax(link, taxId, currentUrl) {
     var limitDate = new Date($link.parents('tr').attr('data-limit-date'));
     var nextDate = new Date(limitDate.getFullYear()+1, limitDate.getMonth(), limitDate.getDate());
 
-    var warning = "Alterar data limite de pagamento de " + limitDate.getDate() + "/" + (limitDate.getMonth()+1) + "/" + limitDate.getFullYear();
-    warning += " para " + nextDate.getDate() + "/" + (nextDate.getMonth()+1) + "/" + nextDate.getFullYear() + "?";
+    changeTax(limitDate, nextDate, taxId, currentUrl, 'api/impostos/pagar');
+    return false; // prevent default behavior
+}
+
+function cancelTax(link, taxId, currentUrl) {
+    $link = $(link);
+    var limitDate = new Date($link.parents('tr').attr('data-limit-date'));
+    var previousDate = new Date(limitDate.getFullYear()-1, limitDate.getMonth(), limitDate.getDate());
+
+    changeTax(limitDate, previousDate, taxId, currentUrl, 'api/impostos/cancelar');
+    return false; // prevent default behaviour
+}
+
+function changeTax(currentDate, changedDate, taxId, currentUrl, requestUrl) {
+    var warning = "Alterar data limite de pagamento de " + currentDate.getDate() + "/" + (currentDate.getMonth()+1) + "/" + currentDate.getFullYear();
+    warning += " para " + changedDate.getDate() + "/" + (changedDate.getMonth()+1) + "/" + changedDate.getFullYear() + "?";
 
     var confirmation = confirm(warning);
-    
+
     if(confirmation) {
         $.ajax({
-            url: BASE_URL + 'api/impostos/pagar/' + taxId,
+            url: BASE_URL + requestUrl + '/' + taxId,
             method: 'POST',
             dataType: 'json',
             success: function(response) {
@@ -148,7 +162,6 @@ function payTax(link, taxId, currentUrl) {
             alert("Ooops, alguma coisa correu mal. Tenta outra vez mais tarde.");
         });
     }
-    return false; // prevent default behavior
 }
 
 // function validateInput(value, pattern, object) {

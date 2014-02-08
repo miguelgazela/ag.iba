@@ -158,12 +158,22 @@ def add_client(request):
 def pay_tax(request, tax_id):
     """Adds a year to the limit date of a tax"""
 
+    return change_tax(request, tax_id, timedelta(days=365))
+
+
+def cancel_tax(request, tax_id):
+    """Subtracts a year to the limit date of a tax"""
+
+    return change_tax(request, tax_id, - timedelta(days=365))
+
+
+def change_tax(request, tax_id, time_change):
     response = {'status': 'fail', 'data': None}
 
     if request.is_ajax() and request.user.is_authenticated():
         try:
             tax = Tax.objects.get(pk=tax_id)
-            tax.limit_date = tax.limit_date + timedelta(days=365)
+            tax.limit_date = tax.limit_date + time_change
             tax.save()
             response['status'] = 'success'
         except Tax.doesNotExist:
