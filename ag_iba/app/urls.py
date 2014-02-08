@@ -16,6 +16,7 @@ urlpatterns = patterns('',
 
     # clients urls
     url(r'^clientes$', views.clients, name="clients"),
+    url(r'^clientes/(?P<sort>[a-z]{1,})/$', views.clients, name="clients"),
     url(r'^clientes/(?P<client_id>\d+)$', views.client, name="client"),
     url(r'^clientes/novo$', views.add_client, name="add_client"),
 )

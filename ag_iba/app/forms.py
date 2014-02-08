@@ -2,6 +2,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from app.models import Client
 from app.models import Tax
+from datetime import datetime
+from datetime import date
 import re
 
 class UserCreationForm(UserCreationForm):
@@ -21,7 +23,6 @@ class ClientForm(forms.ModelForm):
     def clean_nif(self):
         data = self.cleaned_data['nif']
         try:
-             # digits = [int(c) for c in data] or
             digits = map(int, data)
         except ValueError:
             raise forms.ValidationError("Invalid NIF/NIPC")
@@ -48,4 +49,28 @@ class ClientForm(forms.ModelForm):
 class TaxForm(forms.ModelForm):
     class Meta:
         model = Tax
-        fields = ['client', 'brand', 'model', 'plate', 'plate_date', 'limit_date']
+        fields = '__all__'
+
+    def clean_plate(self):
+        """Validates the plate of the tax"""
+        plate = self.cleaned_data['plate']
+        if re.search(r'^(\d{2}-\d{2}-[a-zA-Z]{2})|(\d{2}-[a-zA-Z]{2}-\d{2})|([a-zA-Z]{2}-\d{2}-\d{2})$', plate):
+            return plate
+        raise forms.ValidationError('Invalid licence plate')
+
+    def clean_plate_date(self):
+        """Validates the date of the tax plate"""
+        plate_date = self.cleaned_data['plate_date']
+        if plate_date <= date.today():
+            return plate_date
+        raise forms.ValidationError('Invalid plate date')
+
+    def clean_limit_date(self):
+        """Validates the limit date of the tax payment"""
+        plate_date = self.cleaned_data['plate_date']
+        limit_date = self.cleaned_data['limit_date']
+
+        if limit_date > plate_date and limit_date.month == plate_date.month:
+            return limit_date
+        raise forms.ValidationError('Invalid limit date for payment')
+

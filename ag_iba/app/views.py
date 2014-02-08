@@ -72,21 +72,23 @@ def taxes(request, sort='all'):
 
 @login_required
 def add_tax(request):
-    if request.method == 'GET':
-        clients = Client.objects\
+    clients = Client.objects\
             .extra(select={'lower_name':'lower(name)'})\
             .order_by('lower_name')\
             .values_list('name', 'id')
+
+    if request.method == 'GET':
         return render(request, 'app/taxes/add.html',
             {'list_clients': clients})
     else:
         tax_form = TaxForm(request.POST)
         if tax_form.is_valid():
             tax = tax_form.save()
-            return HttpResponse('Tax added to database')
+            return render(request, 'app/taxes/add.html',
+                {'status': 'success'})
         else:
             return render(request, 'app/taxes/add.html',
-                {'form': tax_form})
+                {'form': tax_form, 'list_clients': clients, 'status': 'fail'})
 
 # <-- /. Taxes Views
 
@@ -95,7 +97,24 @@ def add_tax(request):
 
 @login_required
 def clients(request, sort='all'):
-    clients = Client.objects.all().order_by('-name')
+
+    if not request.user.is_superuser:
+        print "User is not superuser"
+        clients = Client.objects.all().filter(from_home=False)\
+            .order_by('name')
+    else:
+        print "user is superuser"
+
+        valid_sorting = ['all', 'home', 'office']
+        if not sort in valid_sorting:
+            sort = 'all'
+
+        if sort == 'all':
+            clients = Client.objects.all().order_by('name')
+        else:
+            clients = Client.objects.all().filter(from_home=(sort == 'home'))\
+                .order_by('name')
+
     return render(request, 'app/clients/list.html',
         {'list_clients': clients})
 

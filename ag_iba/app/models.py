@@ -32,7 +32,7 @@ class Tax(models.Model):
     client = models.ForeignKey(Client, verbose_name="Cliente")
     brand = models.CharField(max_length=100, verbose_name="Marca")
     model = models.CharField(max_length=100, verbose_name="Modelo")
-    plate = models.CharField(max_length=8, verbose_name="Matrícula")
+    plate = models.CharField(max_length=8, unique=True, verbose_name="Matrícula")
     plate_date = models.DateField(verbose_name="Data Matrícula")
     limit_date = models.DateField(default=datetime.now(), verbose_name="Data Limite de Pagamento")
 
