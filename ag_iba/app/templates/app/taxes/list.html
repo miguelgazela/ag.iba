@@ -24,10 +24,10 @@
                     </thead>
                     <tbody>
                         {% for tax in list_taxes %}
-                        <tr>
+                        <tr data-limit-date="{{tax.limit_date}}">
                             {# <td>{{tax.id}}</td> #}
                             <td>{% if user.is_superuser and client.from_home %}<i class="fa fa-home"></i>{% elif user.is_superuser %}<i class="fa fa-suitcase"></i>{% endif %} <a href="{% url 'client' client_id=tax.client.id %}">{{tax.client.name}}</a></td>
-                            <td>{{tax.brand}}</td>
+                            <td>{{tax.brand}} {{tax.model}}</td>
                             <td>{{tax.plate}}</td>
                             {% if tax.this_month %}
                             <td>{{tax.limit_date}} <span class="badge badge-danger">{{tax.days_left}}</span></td>
@@ -42,7 +42,7 @@
                                         acção <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu {% if tax.this_month %}dropdown-danger{% elif tax.next_month %}dropdown-warning{% else %}dropdown-default{% endif %}" role="menu">
-                                        <li><a href="#"><i class="fa fa-check-square-o"></i> Pago</a></li>
+                                        <li><a href="#" onclick="return payTax(this, {{tax.id}}, 'impostos');"><i class="fa fa-check-square-o"></i> Pago</a></li>
                                         <li><a href="#"><i class="fa fa-square-o"></i> Não Pago</a></li>
                                         <li><a href="{% url 'client' client_id=tax.client.id %}"><i class="fa fa-user"></i> Ver Cliente</a></li>
                                         <li class="divider"></li>

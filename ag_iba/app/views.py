@@ -5,12 +5,16 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import login as auth_login
+from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse
 from app.forms import UserCreationForm
 from app.forms import ClientForm
 from app.forms import TaxForm
 from app.models import Client
 from app.models import Tax
+
+import json
+from datetime import timedelta
 
 
 @login_required
@@ -64,11 +68,13 @@ def signup(request):
 
 # Taxes Views -->
 
+
 @login_required
 def taxes(request, sort='all'):
     taxes = Tax.objects.all().order_by('limit_date')
     return render(request, 'app/taxes/list.html',
         {'list_taxes': taxes})
+
 
 @login_required
 def add_tax(request):
@@ -95,6 +101,7 @@ def add_tax(request):
 
 # Clients Views -->
 
+
 @login_required
 def clients(request, sort='all'):
 
@@ -118,11 +125,14 @@ def clients(request, sort='all'):
     return render(request, 'app/clients/list.html',
         {'list_clients': clients})
 
+
 @login_required
 def client(request, client_id):
     client = get_object_or_404(Client, pk=client_id)
+    taxes = client.tax_set.all().order_by('limit_date')
     return render(request, 'app/clients/view.html',
-        {'client': client})
+        {'client': client, 'taxes': taxes })
+
 
 @login_required
 def add_client(request):
@@ -138,5 +148,31 @@ def add_client(request):
         else:
             return render(request, 'app/clients/add.html',
                 {'form': client_form})
+
+
+# <-- /. Clients Views
+
+
+# API Views -->
+
+def pay_tax(request, tax_id):
+    """Adds a year to the limit date of a tax"""
+
+    response = {'status': 'fail', 'data': None}
+
+    if request.is_ajax() and request.user.is_authenticated():
+        try:
+            tax = Tax.objects.get(pk=tax_id)
+            tax.limit_date = tax.limit_date + timedelta(days=365)
+            tax.save()
+            response['status'] = 'success'
+        except Tax.doesNotExist:
+            response['data'] = {'title': 'No Tax with that id was found'}
+    else:
+        response['data'] = {'title': "API can only be used with authenticated AJAX requests"}
+
+    return HttpResponse(
+        json.dumps(response, cls=DjangoJSONEncoder),
+        content_type="application/json")
 
 

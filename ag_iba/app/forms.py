@@ -55,7 +55,7 @@ class TaxForm(forms.ModelForm):
         """Validates the plate of the tax"""
         plate = self.cleaned_data['plate']
         if re.search(r'^(\d{2}-\d{2}-[a-zA-Z]{2})|(\d{2}-[a-zA-Z]{2}-\d{2})|([a-zA-Z]{2}-\d{2}-\d{2})$', plate):
-            return plate
+            return plate.upper()
         raise forms.ValidationError('Invalid licence plate')
 
     def clean_plate_date(self):
