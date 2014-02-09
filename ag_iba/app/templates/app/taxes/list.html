@@ -82,7 +82,7 @@
                 </ul>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-success btn-sidebar" disabled="disabled">Adicionar imposto</button>
+                <button type="button" class="btn btn-success btn-sidebar" onclick="window.location = '{% url 'add_tax' %}';">Novo Imposto</button>
             </div>
             <hr>
             {% if not_real_variable %}
