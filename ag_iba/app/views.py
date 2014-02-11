@@ -7,6 +7,7 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import login as auth_login
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse
+from django.http import Http404
 from app.forms import UserCreationForm
 from app.forms import ClientForm
 from app.forms import TaxForm
@@ -71,17 +72,45 @@ def signup(request):
 
 @login_required
 def taxes(request, sort='all'):
-    taxes = Tax.objects.all().order_by('limit_date')
+
+    if not request.user.is_superuser:
+        taxes = Tax.objects.all().filter(client__from_home=False)\
+            .order_by('limit_date')
+    else:
+        valid_sorting = ['all', 'home', 'office']
+        if not sort in valid_sorting:
+            sort = 'all'
+
+        if sort == 'all':
+            taxes = Tax.objects.all().order_by('limit_date')
+        else:
+            taxes = Tax.objects.all().filter(client__from_home=(sort == 'home'))\
+                .order_by('limit_date')
+
     return render(request, 'app/taxes/list.html',
-        {'list_taxes': taxes})
+        {'list_taxes': taxes, 'sort': sort})
 
 
 @login_required
-def add_tax(request):
-    clients = Client.objects\
-            .extra(select={'lower_name':'lower(name)'})\
-            .order_by('lower_name')\
-            .values_list('name', 'id')
+def add_tax(request, client_id=None):
+
+    if client_id is not None:
+        client = get_object_or_404(Client, pk=client_id)
+        if not request.user.is_superuser and client.from_home:
+            raise Http404
+        clients = [(client.name, client.id)]
+    else:
+        if not request.user.is_superuser:
+            clients = Client.objects\
+                .extra(select={'lower_name':'lower(name)'})\
+                .filter(from_home=False)\
+                .order_by('lower_name')\
+                .values_list('name', 'id')
+        else:
+            clients = Client.objects\
+                .extra(select={'lower_name':'lower(name)'})\
+                .order_by('lower_name')\
+                .values_list('name', 'id')
 
     if request.method == 'GET':
         return render(request, 'app/taxes/add.html',
@@ -89,7 +118,7 @@ def add_tax(request):
     else:
         tax_form = TaxForm(request.POST)
         if tax_form.is_valid():
-            tax = tax_form.save()
+            tax_form.save()
             return render(request, 'app/taxes/add.html',
                 {'status': 'success'})
         else:
@@ -106,12 +135,9 @@ def add_tax(request):
 def clients(request, sort='all'):
 
     if not request.user.is_superuser:
-        print "User is not superuser"
         clients = Client.objects.all().filter(from_home=False)\
             .order_by('name')
     else:
-        print "user is superuser"
-
         valid_sorting = ['all', 'home', 'office']
         if not sort in valid_sorting:
             sort = 'all'
@@ -123,7 +149,7 @@ def clients(request, sort='all'):
                 .order_by('name')
 
     return render(request, 'app/clients/list.html',
-        {'list_clients': clients})
+        {'list_clients': clients, 'sort': sort})
 
 
 @login_required

@@ -12,7 +12,8 @@ urlpatterns = patterns('',
     # taxes urls
     url(r'^impostos$', views.taxes, name="taxes"),
     url(r'^impostos/novo$', views.add_tax, name="add_tax"),
-    url(r'^imposts/(?P<sort>[a-z]+)/$', views.taxes, name="taxes"),
+    url(r'^impostos/novo/(?P<client_id>\d+)$', views.add_tax, name="add_tax"),
+    url(r'^impostos/(?P<sort>[a-z]+)/$', views.taxes, name="taxes"),
 
     # clients urls
     url(r'^clientes$', views.clients, name="clients"),

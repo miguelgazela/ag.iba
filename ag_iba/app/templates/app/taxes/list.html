@@ -9,6 +9,13 @@
         <div class="col-md-9">
             <h2>Impostos</h2>
             <hr>
+            {% if user.is_superuser %}
+            <ul class="nav nav-tabs">
+                <li class="{% if sort == 'all' %}active{% endif %}"><a href="{% url 'taxes' sort='all' %}">Todos</a></li>
+                <li class="{% if sort == 'home' %}active{% endif %}"><a href="{% url 'taxes' sort='home' %}">Casa</a></li>
+                <li class="{% if sort == 'office' %}active{% endif %}"><a href="{% url 'taxes' sort='office' %}">Escritório</a></li>
+            </ul>
+            {% endif %}
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
                     <thead>
@@ -26,7 +33,7 @@
                         {% for tax in list_taxes %}
                         <tr data-limit-date="{{tax.limit_date}}">
                             {# <td>{{tax.id}}</td> #}
-                            <td>{% if user.is_superuser and client.from_home %}<i class="fa fa-home"></i>{% elif user.is_superuser %}<i class="fa fa-suitcase"></i>{% endif %} <a href="{% url 'client' client_id=tax.client.id %}">{{tax.client.name}}</a></td>
+                            <td>{% if user.is_superuser and tax.client.from_home %}<i class="fa fa-home"></i>{% elif user.is_superuser %}<i class="fa fa-suitcase"></i>{% endif %} <a href="{% url 'client' client_id=tax.client.id %}">{{tax.client.name}}</a></td>
                             <td>{{tax.brand}} {{tax.model}}</td>
                             <td>{{tax.plate}}</td>
                             {% if tax.this_month %}

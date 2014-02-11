@@ -23,7 +23,7 @@
                             <label for="clientName"><i class="fa fa-user"></i> Cliente</label>
                             <select name="client" multiple class="form-control client-select">
                                 {% for client in list_clients %}
-                                <option value="{{client.1}}">{{client.0}}</option>
+                                <option value="{{client.1}}" {% if list_clients|length == 1 %}selected="select"{% endif %}>{{client.0}}</option>
                                 {% endfor %}
                             </select>
                             <span class="help-block">{{form.errors.client}}</span>
