@@ -1,0 +1,75 @@
+{% extends "app/base.html" %}
+
+{% block title %}Ag.Iba - Novo cliente{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-3"></div>
+
+        <div class="col-sm-6">
+
+            <div class="panel panel-default form-panel">
+                <div class="panel-heading"><h3 class="text-center">Novo Cliente</h3 class="text-center"></div>
+                <div class="panel-body">
+                    <form role="form" class="agiba-form" action="{% url 'add_client' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group {% if form.name.errors %}has-error{% endif %}">
+                            <i class="fa fa-user"></i>
+                            <input name="name" type="text" class="form-control" placeholder="Nome" value="{{form.name.value}}" autocomplete="off" required autofocus>
+                            <span class="help-block">{{form.errors.name}}</span>
+                        </div>
+                        <div class="form-group {% if form.nif.errors %}has-error{% endif %}">
+                            <i class="fa fa-credit-card"></i>
+                            <input name="nif" pattern="\d{9}" type="text" class="form-control" placeholder="NIF/NIPC" value="{{form.nif.value}}" required>
+                            <span class="help-block">{{form.errors.nif}}</span>
+                        </div>
+                        <div class="form-group {% if form.address.errors %}has-error{% endif %}">
+                            <i class="fa fa-globe"></i>
+                            <input name="address" type="text" class="form-control" placeholder="Morada" value="{{form.address.value}}" required>
+                            <span class="help-block">{{form.errors.address}}</span>
+                        </div>
+                        <div class="form-group {% if form.city.errors %}has-error{% endif %}">
+                            <i class="fa fa-map-marker"></i>
+                            <input name="city" type="text" class="form-control" placeholder="Cidade" value="{{form.city.value}}" required>
+                            <span class="help-block">{{form.errors.city}}</span>
+                        </div>
+                        <div class="form-group {% if form.local.errors %}has-error{% endif %}">
+                            <i class="fa fa-map-marker"></i>
+                            <input name="local" type="text" class="form-control" placeholder="Localidade" value="{{form.local.value}}" required>
+                            <span class="help-block">{{form.errors.local}}</span>
+                        </div>
+                        <div class="form-group {% if form.postal.errors %}has-error{% endif %}">
+                            <i class="fa fa-qrcode"></i>
+                            <input name="postal" pattern="(\d{4}([\-]\d{3})?)" type="text" class="form-control" placeholder="Código postal, Ex.: 4420 ou 4420-164" value="{{form.postal.value}}" required>
+                            <span class="help-block">{{form.errors.postal}}</span>
+                        </div>
+                        {% if user.is_superuser %}
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="client_type" id="optionsRadios1" value="home" checked>
+                                Casa
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="client_type" id="optionsRadios2" value="office">
+                                Escritório
+                            </label>
+                        </div>
+                        {% endif %}
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <button type="reset" class="btn btn-default">Limpar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3"></div>
+    </div> <!-- /.row -->
+
+</div>
+
+{% endblock %}
