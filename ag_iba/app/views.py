@@ -176,6 +176,12 @@ def add_client(request):
                 {'form': client_form})
 
 
+@login_required
+def remove_client(request, client_id):
+    pass
+
+
+
 # <-- /. Clients Views
 
 
