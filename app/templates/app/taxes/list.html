@@ -1,0 +1,127 @@
+{% extends "app/base.html" %}
+
+{% block title %}Ag.Iba - Impostos{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <h2>Impostos</h2>
+            <hr>
+            {% if user.is_superuser %}
+            <ul class="nav nav-tabs">
+                <li class="{% if sort == 'all' %}active{% endif %}"><a href="{% url 'taxes' sort='all' %}">Todos</a></li>
+                <li class="{% if sort == 'home' %}active{% endif %}"><a href="{% url 'taxes' sort='home' %}">Casa</a></li>
+                <li class="{% if sort == 'office' %}active{% endif %}"><a href="{% url 'taxes' sort='office' %}">Escritório</a></li>
+            </ul>
+            {% endif %}
+            <div class="table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            {# <th>#</th> #}
+                            <th>Cliente</th>
+                            <th>Viatura</th>
+                            <th>Matrícula</th>
+                            <th>Data limite</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for tax in list_taxes %}
+                        <tr data-limit-date="{{tax.limit_date}}">
+                            {# <td>{{tax.id}}</td> #}
+                            <td>{% if user.is_superuser and tax.client.from_home %}<i class="fa fa-home"></i>{% elif user.is_superuser %}<i class="fa fa-suitcase"></i>{% endif %} <a href="{% url 'client' client_id=tax.client.id %}">{{tax.client.name}}</a></td>
+                            <td>{{tax.brand}} {{tax.model}}</td>
+                            <td>{{tax.plate}}</td>
+                            {% if tax.this_month %}
+                            <td>{{tax.limit_date}} <span class="badge badge-danger">{{tax.days_left}}</span></td>
+                            {% elif tax.next_month %}
+                            <td>{{tax.limit_date}} <span class="badge badge-warning">{{tax.days_left}}</span></td>
+                            {% else %}
+                            <td>{{tax.limit_date}}</td>
+                            {% endif %}
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn {% if tax.this_month %}btn-danger{% elif tax.next_month %}btn-warning{% else %}btn-default{% endif %} btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        acção <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu {% if tax.this_month %}dropdown-danger{% elif tax.next_month %}dropdown-warning{% else %}dropdown-default{% endif %}" role="menu">
+                                        <li><a href="#" onclick="return payTax(this, {{tax.id}}, 'impostos');"><i class="fa fa-check-square-o"></i> Pago</a></li>
+                                        <li><a href="#" onclick="return cancelTax(this, {{tax.id}}, 'impostos');"><i class="fa fa-square-o"></i> Não Pago</a></li>
+                                        <li><a href="{% url 'client' client_id=tax.client.id %}"><i class="fa fa-user"></i> Ver Cliente</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#"><i class="fa fa-trash-o"></i> Eliminar Importo</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>
+                                <input type="checkbox" value="">
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-3 sidebar">
+            <form class="form-inline" role="form" action="#">
+                <div class="form-group">
+                    <i class="fa fa-search"></i>
+                    <label class="sr-only" for="exampleInputEmail2">Search</label>
+                    <input type="search" class="form-control" id="exampleInputEmail2" placeholder="Pesquisa Imposto">
+                </div>
+            </form>
+            <hr>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle btn-sidebar" data-toggle="dropdown" disabled="disabled">
+                    Aplicar a seleccionados <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-success btn-sidebar" onclick="window.location = '{% url 'add_tax' %}';">Novo Imposto</button>
+            </div>
+            <hr>
+            {% if not_real_variable %}
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading"><strong>Actividade recente</strong></div>            
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="badge">há 17m</span>
+                        <h5 class="list-group-item-heading">miguelgazela</h5>
+                        <p class="list-group-item-text">Adiantou data limite de 77-CJ-84</p>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">há 4h</span>
+                        <h5 class="list-group-item-heading">vmcnoliveira</h5>
+                        <p class="list-group-item-text">Atrasou data limite de 14-74-SL</p>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">há 2d</span>
+                        <h5 class="list-group-item-heading">List group item heading</h5>
+                        <p class="list-group-item-text">Eliminou imposto de 08-66-VS</p>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">há 1sem</span>
+                        <h5 class="list-group-item-heading">List group item heading</h5>
+                        <p class="list-group-item-text">texto aqui e tal</p>
+                    </li>
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div> <!-- /container -->
+
+{% endblock %}

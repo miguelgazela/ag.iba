@@ -53,9 +53,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'ag_iba.urls'
+ROOT_URLCONF = 'agiba.urls'
 
-WSGI_APPLICATION = 'ag_iba.wsgi.application'
+WSGI_APPLICATION = 'agiba.wsgi.application'
 
 
 # Database
@@ -64,7 +64,7 @@ WSGI_APPLICATION = 'ag_iba.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, '../db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
