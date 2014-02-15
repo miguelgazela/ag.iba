@@ -176,10 +176,22 @@ def add_client(request):
                 {'form': client_form})
 
 
-@login_required
 def remove_client(request, client_id):
-    pass
+    response = {'status': 'fail', 'data': None}
 
+    if request.is_ajax() and request.user.is_authenticated():
+        try:
+            client = Client.objects.get(pk=client_id)
+            client.delete()
+            response['status'] = 'success'
+        except Client.doesNotExist:
+            response['data'] = {'title': "No Client with that id was found"}
+    else:
+        response['data'] = {'title': "API can only be used with authenticated AJAX requests"}
+
+    return HttpResponse(
+        json.dumps(response, cls=DjangoJSONEncoder),
+        content_type="application/json")
 
 
 # <-- /. Clients Views
@@ -189,13 +201,11 @@ def remove_client(request, client_id):
 
 def pay_tax(request, tax_id):
     """Adds a year to the limit date of a tax"""
-
     return change_tax(request, tax_id, timedelta(days=365))
 
 
 def cancel_tax(request, tax_id):
     """Subtracts a year to the limit date of a tax"""
-
     return change_tax(request, tax_id, - timedelta(days=365))
 
 

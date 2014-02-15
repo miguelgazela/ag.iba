@@ -97,7 +97,7 @@
                 <button type="button" class="btn btn-success btn-sidebar" onclick="window.location = '{% url 'add_tax' client_id=client.id %}';">Adicionar Imposto a Cliente</button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-danger btn-sidebar" disabled="disabled">Eliminar Cliente</button>
+                <button type="button" class="btn btn-danger btn-sidebar" onclick="return removeClient({{client.id}});">Eliminar Cliente</button>
             </div>
             <hr>
             {% if not_real_variable %}

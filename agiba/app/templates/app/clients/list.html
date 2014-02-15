@@ -49,7 +49,7 @@
                                         <li><a href="{% url 'add_tax' client_id=client.id %}"><i class="fa fa-plus-square"></i> Adicionar Imposto</a></li>
                                         <li><a href="#"><i class="fa fa-edit"></i> Editar Info</a></li>
                                         <li class="divider"></li>
-                                        <li><a href=""><i class="fa fa-trash-o"></i> Remover Cliente</a></li>
+                                        <li><a href="#" onclick="return removeClient({{client.id}});"><i class="fa fa-trash-o"></i> Remover Cliente</a></li>
                                     </ul>
                                 </div>
                             </td>

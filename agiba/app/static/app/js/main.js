@@ -107,7 +107,7 @@ $(document).ready(function() {
                 $('table + p').removeClass('hidden');
             } else {
                 $('table + p').addClass('hidden');
-            }            
+            }
         },
         250,
         true
@@ -154,5 +154,22 @@ function changeTax(currentDate, changedDate, taxId, currentUrl, requestUrl) {
             alert("Ooops, alguma coisa correu mal. Tenta outra vez mais tarde.");
         });
     }
+}
+
+function removeClient(client_id) {
+    $.ajax({
+        url: BASE_URL + 'clientes/remover/' + client_id,
+        method: 'POST',
+        dataType: 'json',
+        success: function(response) {
+            if(response['status'] === 'success') {
+                window.location = BASE_URL + 'clientes';
+            } else {
+                alert("Ooops, alguma coisa correu mal. Tenta outra vez mais tarde.");
+            }
+        }
+    }).fail(function() {
+        alert("Ooops, alguma coisa correu mal. Tenta outra vez mais tarde.");
+    });
 }
 
