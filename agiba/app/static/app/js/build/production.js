@@ -219,14 +219,36 @@ function changeTax(currentDate, changedDate, taxId, currentUrl, requestUrl) {
     }
 }
 
-function removeClient(client_id) {
+function removeClient(url) {
+
+    var confirmation = confirm("Tem a certeza que deseja apagar este cliente?");
+
+    if(confirmation) {
+        $.ajax({
+            url: url,
+            method: 'POST',
+            dataType: 'json',
+            success: function(response) {
+                if(response['status'] === 'success') {
+                    window.location = '/agiba/clientes';
+                } else {
+                    alert("Ooops, alguma coisa correu mal. Tenta outra vez mais tarde.");
+                }
+            }
+        }).fail(function() {
+            alert("Ooops, alguma coisa correu mal. Tenta outra vez mais tarde.");
+        });
+    }
+}
+
+function removeTax(url, nextUrl) {
     $.ajax({
-        url: BASE_URL + 'clientes/remover/' + client_id,
-        method: 'POST',
-        dataType: 'json',
+        url: url,
+        method: "POST",
+        dataType: "json",
         success: function(response) {
             if(response['status'] === 'success') {
-                window.location = BASE_URL + 'clientes';
+                window.location = nextUrl;
             } else {
                 alert("Ooops, alguma coisa correu mal. Tenta outra vez mais tarde.");
             }

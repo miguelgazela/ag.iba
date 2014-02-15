@@ -32,7 +32,6 @@
                     <tbody>
                         {% for tax in list_taxes %}
                         <tr data-limit-date="{{tax.limit_date}}">
-                            {# <td>{{tax.id}}</td> #}
                             <td>{% if user.is_superuser and tax.client.from_home %}<i class="fa fa-home"></i>{% elif user.is_superuser %}<i class="fa fa-suitcase"></i>{% endif %} <a href="{% url 'client' client_id=tax.client.id %}">{{tax.client.name}}</a></td>
                             <td>{{tax.brand}} {{tax.model}}</td>
                             <td>{{tax.plate}}</td>
@@ -53,7 +52,7 @@
                                         <li><a href="#" onclick="return cancelTax(this, {{tax.id}}, 'impostos');"><i class="fa fa-square-o"></i> Não Pago</a></li>
                                         <li><a href="{% url 'client' client_id=tax.client.id %}"><i class="fa fa-user"></i> Ver Cliente</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#"><i class="fa fa-trash-o"></i> Eliminar Importo</a></li>
+                                        <li><a href="#" onclick="return removeTax('{% url 'remove_tax' tax_id=tax.id %}', '{% url 'taxes' %}');"><i class="fa fa-trash-o"></i> Eliminar Imposto</a></li>
                                     </ul>
                                 </div>
                             </td>

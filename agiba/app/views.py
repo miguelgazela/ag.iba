@@ -125,6 +125,24 @@ def add_tax(request, client_id=None):
             return render(request, 'app/taxes/add.html',
                 {'form': tax_form, 'list_clients': clients, 'status': 'fail'})
 
+
+def remove_tax(request, tax_id):
+    response = {'status': 'fail', 'data': None}
+
+    if request.is_ajax() and request.user.is_authenticated():
+        try:
+            tax = Tax.objects.get(pk=tax_id)
+            tax.delete()
+            response['status'] = 'success'
+        except Tax.doesNotExist:
+            response['data'] = {'title': "No Tax with that id was found"}
+    else:
+        response['data'] = {'title': "API can only be used with authenticated AJAX requests"}
+
+    return HttpResponse(
+        json.dumps(response, cls=DjangoJSONEncoder),
+        content_type="application/json")
+
 # <-- /. Taxes Views
 
 
@@ -132,20 +150,20 @@ def add_tax(request, client_id=None):
 
 
 @login_required
-def clients(request, sort='all'):
+def clients(request, sort='todos'):
 
     if not request.user.is_superuser:
         clients = Client.objects.all().filter(from_home=False)\
             .order_by('name')
     else:
-        valid_sorting = ['all', 'home', 'office']
+        valid_sorting = ['todos', 'casa', 'escritorio']
         if not sort in valid_sorting:
-            sort = 'all'
+            sort = 'todos'
 
-        if sort == 'all':
+        if sort == 'todos':
             clients = Client.objects.all().order_by('name')
         else:
-            clients = Client.objects.all().filter(from_home=(sort == 'home'))\
+            clients = Client.objects.all().filter(from_home=(sort == 'casa'))\
                 .order_by('name')
 
     return render(request, 'app/clients/list.html',
