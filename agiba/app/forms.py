@@ -2,7 +2,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from app.models import Client
 from app.models import Tax
-from datetime import datetime
 from datetime import date
 import re
 

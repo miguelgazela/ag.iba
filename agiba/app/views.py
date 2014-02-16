@@ -125,6 +125,24 @@ def add_tax(request, client_id=None):
             return render(request, 'app/taxes/add.html',
                 {'form': tax_form, 'list_clients': clients, 'status': 'fail'})
 
+
+def remove_tax(request, tax_id):
+    response = {'status': 'fail', 'data': None}
+
+    if request.is_ajax() and request.user.is_authenticated():
+        try:
+            tax = Tax.objects.get(pk=tax_id)
+            tax.delete()
+            response['status'] = 'success'
+        except Tax.doesNotExist:
+            response['data'] = {'title': "No Tax with that id was found"}
+    else:
+        response['data'] = {'title': "API can only be used with authenticated AJAX requests"}
+
+    return HttpResponse(
+        json.dumps(response, cls=DjangoJSONEncoder),
+        content_type="application/json")
+
 # <-- /. Taxes Views
 
 
@@ -132,20 +150,20 @@ def add_tax(request, client_id=None):
 
 
 @login_required
-def clients(request, sort='all'):
+def clients(request, sort='todos'):
 
     if not request.user.is_superuser:
         clients = Client.objects.all().filter(from_home=False)\
             .order_by('name')
     else:
-        valid_sorting = ['all', 'home', 'office']
+        valid_sorting = ['todos', 'casa', 'escritorio']
         if not sort in valid_sorting:
-            sort = 'all'
+            sort = 'todos'
 
-        if sort == 'all':
+        if sort == 'todos':
             clients = Client.objects.all().order_by('name')
         else:
-            clients = Client.objects.all().filter(from_home=(sort == 'home'))\
+            clients = Client.objects.all().filter(from_home=(sort == 'casa'))\
                 .order_by('name')
 
     return render(request, 'app/clients/list.html',
@@ -158,6 +176,23 @@ def client(request, client_id):
     taxes = client.tax_set.all().order_by('limit_date')
     return render(request, 'app/clients/view.html',
         {'client': client, 'taxes': taxes })
+
+
+@login_required
+def edit_client(request, client_id):
+    client = get_object_or_404(Client, pk=client_id)
+
+    if request.method == 'GET':
+        return render(request, 'app/clients/edit.html', {'client':client})
+    elif request.method == 'POST':
+        edit_form = ClientForm(request.POST, instance=client)
+
+        if edit_form.is_valid():
+            edit_form.save()
+            return redirect('client', client_id=client_id)
+        else:
+            return render(request, 'app/clients/edit.html',
+                {'client': client, 'form': edit_form})
 
 
 @login_required
@@ -176,10 +211,22 @@ def add_client(request):
                 {'form': client_form})
 
 
-@login_required
 def remove_client(request, client_id):
-    pass
+    response = {'status': 'fail', 'data': None}
 
+    if request.is_ajax() and request.user.is_authenticated():
+        try:
+            client = Client.objects.get(pk=client_id)
+            client.delete()
+            response['status'] = 'success'
+        except Client.doesNotExist:
+            response['data'] = {'title': "No Client with that id was found"}
+    else:
+        response['data'] = {'title': "API can only be used with authenticated AJAX requests"}
+
+    return HttpResponse(
+        json.dumps(response, cls=DjangoJSONEncoder),
+        content_type="application/json")
 
 
 # <-- /. Clients Views
@@ -189,13 +236,11 @@ def remove_client(request, client_id):
 
 def pay_tax(request, tax_id):
     """Adds a year to the limit date of a tax"""
-
     return change_tax(request, tax_id, timedelta(days=365))
 
 
 def cancel_tax(request, tax_id):
     """Subtracts a year to the limit date of a tax"""
-
     return change_tax(request, tax_id, - timedelta(days=365))
 
 

@@ -14,12 +14,14 @@ urlpatterns = patterns('',
     url(r'^impostos/novo$', views.add_tax, name="add_tax"),
     url(r'^impostos/novo/(?P<client_id>\d+)$', views.add_tax, name="add_tax"),
     url(r'^impostos/(?P<sort>[a-z]+)/$', views.taxes, name="taxes"),
+    url(r'^impostos/remover/(?P<tax_id>\d+)$', views.remove_tax, name="remove_tax"),
 
     # clients urls
     url(r'^clientes$', views.clients, name="clients"),
     url(r'^clientes/(?P<sort>[a-z]+)/$', views.clients, name="clients"),
     url(r'^clientes/(?P<client_id>\d+)$', views.client, name="client"),
     url(r'^clientes/novo$', views.add_client, name="add_client"),
+    url(r'^clientes/editar/(?P<client_id>\d+)$', views.edit_client, name="edit_client"),
     url(r'^clientes/remover/(?P<client_id>\d+)$', views.remove_client, name="remove_client"),
 
     # api urls

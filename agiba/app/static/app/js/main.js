@@ -107,7 +107,7 @@ $(document).ready(function() {
                 $('table + p').removeClass('hidden');
             } else {
                 $('table + p').addClass('hidden');
-            }            
+            }
         },
         250,
         true
@@ -154,5 +154,44 @@ function changeTax(currentDate, changedDate, taxId, currentUrl, requestUrl) {
             alert("Ooops, alguma coisa correu mal. Tenta outra vez mais tarde.");
         });
     }
+}
+
+function removeClient(url) {
+
+    var confirmation = confirm("Tem a certeza que deseja apagar este cliente?");
+
+    if(confirmation) {
+        $.ajax({
+            url: url,
+            method: 'POST',
+            dataType: 'json',
+            success: function(response) {
+                if(response['status'] === 'success') {
+                    window.location = '/agiba/clientes';
+                } else {
+                    alert("Ooops, alguma coisa correu mal. Tenta outra vez mais tarde.");
+                }
+            }
+        }).fail(function() {
+            alert("Ooops, alguma coisa correu mal. Tenta outra vez mais tarde.");
+        });
+    }
+}
+
+function removeTax(url, nextUrl) {
+    $.ajax({
+        url: url,
+        method: "POST",
+        dataType: "json",
+        success: function(response) {
+            if(response['status'] === 'success') {
+                window.location = nextUrl;
+            } else {
+                alert("Ooops, alguma coisa correu mal. Tenta outra vez mais tarde.");
+            }
+        }
+    }).fail(function() {
+        alert("Ooops, alguma coisa correu mal. Tenta outra vez mais tarde.");
+    });
 }
 

@@ -2,6 +2,13 @@
 
 {% block title %}Ag.Iba - Impostos{% endblock %}
 
+{% block navbar %}
+<li><a href="{% url 'clients' %}"><i class="fa fa-users"></i> Clientes</a></li>
+<li><a href="{% url 'taxes' %}" class="active"><i class="fa fa-list-alt"></i>  Impostos</a></li>
+<li><a href="{% url 'add_client' %}"><i class="fa fa-plus-square"></i> Novo Cliente</a></li>
+<li><a href="{% url 'add_tax' %}"><i class="fa fa-plus-square"></i> Novo Imposto</a></li>
+{% endblock %}
+
 {% block content %}
 
 <div class="container">
@@ -32,7 +39,6 @@
                     <tbody>
                         {% for tax in list_taxes %}
                         <tr data-limit-date="{{tax.limit_date}}">
-                            {# <td>{{tax.id}}</td> #}
                             <td>{% if user.is_superuser and tax.client.from_home %}<i class="fa fa-home"></i>{% elif user.is_superuser %}<i class="fa fa-suitcase"></i>{% endif %} <a href="{% url 'client' client_id=tax.client.id %}">{{tax.client.name}}</a></td>
                             <td>{{tax.brand}} {{tax.model}}</td>
                             <td>{{tax.plate}}</td>
@@ -53,7 +59,7 @@
                                         <li><a href="#" onclick="return cancelTax(this, {{tax.id}}, 'impostos');"><i class="fa fa-square-o"></i> Não Pago</a></li>
                                         <li><a href="{% url 'client' client_id=tax.client.id %}"><i class="fa fa-user"></i> Ver Cliente</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#"><i class="fa fa-trash-o"></i> Eliminar Importo</a></li>
+                                        <li><a href="#" onclick="return removeTax('{% url 'remove_tax' tax_id=tax.id %}', '{% url 'taxes' %}');"><i class="fa fa-trash-o"></i> Eliminar Imposto</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -64,6 +70,7 @@
                         {% endfor %}
                     </tbody>
                 </table>
+                <p class="text-center {% if list_taxes|length > 0 %}hidden{% endif %}">Não há impostos que correspondam a essa pesquisa.</p>
             </div>
         </div>
 

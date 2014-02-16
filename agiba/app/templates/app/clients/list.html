@@ -2,6 +2,13 @@
 
 {% block title %}Ag.Iba - Clientes{% endblock %}
 
+{% block navbar %}
+<li><a href="{% url 'clients' %}" class="active"><i class="fa fa-users"></i> Clientes</a></li>
+<li><a href="{% url 'taxes' %}"><i class="fa fa-list-alt"></i>  Impostos</a></li>
+<li><a href="{% url 'add_client' %}"><i class="fa fa-plus-square"></i> Novo Cliente</a></li>
+<li><a href="{% url 'add_tax' %}"><i class="fa fa-plus-square"></i> Novo Imposto</a></li>
+{% endblock %}
+
 {% block content %}
 
 <div class="container">
@@ -11,9 +18,9 @@
             <hr>
             {% if user.is_superuser %}
             <ul class="nav nav-tabs">
-                <li class="{% if sort == 'all' %}active{% endif %}"><a href="{% url 'clients' sort='all' %}">Todos</a></li>
-                <li class="{% if sort == 'home' %}active{% endif %}"><a href="{% url 'clients' sort='home' %}">Casa</a></li>
-                <li class="{% if sort == 'office' %}active{% endif %}"><a href="{% url 'clients' sort='office' %}">Escritório</a></li>
+                <li class="{% if sort == 'todos' %}active{% endif %}"><a href="{% url 'clients' sort='todos' %}">Todos</a></li>
+                <li class="{% if sort == 'casa' %}active{% endif %}"><a href="{% url 'clients' sort='casa' %}">Casa</a></li>
+                <li class="{% if sort == 'escritorio' %}active{% endif %}"><a href="{% url 'clients' sort='escritorio' %}">Escritório</a></li>
             </ul>
             {% endif %}
             <div class="table-responsive">
@@ -47,9 +54,9 @@
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="{% url 'client' client_id=client.id %}"><i class="fa fa-user"></i> Ver Cliente</a></li>
                                         <li><a href="{% url 'add_tax' client_id=client.id %}"><i class="fa fa-plus-square"></i> Adicionar Imposto</a></li>
-                                        <li><a href="#"><i class="fa fa-edit"></i> Editar Info</a></li>
+                                        <li><a href="#" onclick="window.location = '{% url 'edit_client' client_id=client.id %}';"><i class="fa fa-edit"></i> Editar Cliente</a></li>
                                         <li class="divider"></li>
-                                        <li><a href=""><i class="fa fa-trash-o"></i> Remover Cliente</a></li>
+                                        <li><a href="#" onclick="return removeClient('{% url 'remove_client' client_id=client.id %}');"><i class="fa fa-trash-o"></i> Remover Cliente</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -60,7 +67,7 @@
                         {% endfor %}
                     </tbody>
                 </table>
-                <p class="text-center hidden">Não há clientes que correspondam a essa pesquisa.</p class="text-center hidden">
+                <p class="text-center {% if list_clients|length > 0 %}hidden{% endif %}">Não há clientes que correspondam a essa pesquisa.</p>
             </div>
         </div>
 

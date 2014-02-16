@@ -7,16 +7,16 @@ module.exports = function(grunt) {
         concat: {
             dist: {
                 src: [
-                    'ag_iba/app/static/app/js/*.js' // All JS files in the JS folder
+                    'app/static/app/js/*.js' // All JS files in the JS folder
                 ],
-                dest: 'ag_iba/app/static/app/js/build/production.js',
+                dest: 'app/static/app/js/build/production.js',
             }
         },
 
         uglify: {
             build: {
-                src: 'ag_iba/app/static/app/js/build/production.js',
-                dest: 'ag_iba/app/static/app/js/build/production.min.js'
+                src: 'app/static/app/js/build/production.js',
+                dest: 'app/static/app/js/build/production.min.js'
             }
         },
 
@@ -24,9 +24,9 @@ module.exports = function(grunt) {
             dynamic: {
                 files: [{
                     expand: true,
-                    cwd: 'ag_iba/app/static/app/images/',
+                    cwd: 'app/static/app/images/',
                     src: ['**/*.{png,jpg,gif}'],
-                    dest: 'ag_iba/app/static/app/images/build/'
+                    dest: 'app/static/app/images/build/'
                 }]
             }
         },
@@ -36,14 +36,14 @@ module.exports = function(grunt) {
                 livereload: true,
             },
             scripts: {
-                files: ['ag_iba/app/static/app/js/*.js'],
+                files: ['app/static/app/js/*.js'],
                 tasks: ['concat', 'uglify'],
                 options: {
                     spawn: false,
                 },
             },
             css: {
-                files: ['ag_iba/app/static/app/css/*.scss'],
+                files: ['app/static/app/css/*.scss'],
                 tasks: ['sass'],
                 options: {
                     spawn: false,
@@ -57,7 +57,7 @@ module.exports = function(grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    'ag_iba/app/static/app/css/build/global.css': 'ag_iba/app/static/app/css/global.scss'
+                    'app/static/app/css/build/global.css': 'app/static/app/css/global.scss'
                 }
             }
         }
