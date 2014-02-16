@@ -2,6 +2,13 @@
 
 {% block title %}Ag.Iba - Novo imposto{% endblock %}
 
+{% block navbar %}
+<li><a href="{% url 'clients' %}"><i class="fa fa-users"></i> Clientes</a></li>
+<li><a href="{% url 'taxes' %}"><i class="fa fa-list-alt"></i>  Impostos</a></li>
+<li><a href="{% url 'add_client' %}"><i class="fa fa-plus-square"></i> Novo Cliente</a></li>
+<li><a href="{% url 'add_tax' %}" class="active"><i class="fa fa-plus-square"></i> Novo Imposto</a></li>
+{% endblock %}
+
 {% block content %}
 
 <div class="container">
@@ -21,7 +28,7 @@
                         {% csrf_token %}
                         <div class="form-group {% if form.client.errors %}has-error{% endif %}">
                             <label for="clientName"><i class="fa fa-user"></i> Cliente</label>
-                            <select name="client" multiple class="form-control client-select">
+                            <select name="client" size="5" class="form-control client-select">
                                 {% for client in list_clients %}
                                 <option value="{{client.1}}" {% if list_clients|length == 1 %}selected="select"{% endif %}>{{client.0}}</option>
                                 {% endfor %}

@@ -281,17 +281,24 @@ body {
 
         a {
             color: $text-grey;
-            padding-top: 20px;
+            padding-top: 5px;
+            margin-top: 15px;
             padding-bottom: 5px;
             margin-bottom: 15px;
 
             &:hover,
-            &:focus {
-                color: $brand-color;
-                margin-bottom: 14px;
-                border-bottom: 1px solid $brand-color;
+            &:focus,
+            &.active {
+                @include border-radius(5px);
+                color: white;
+                background-color: $brand-color;
+                border: 0;
             }
         }
+    }
+
+    .navbar-nav > li + li {
+        margin-left: 4px;
     }
 }
 

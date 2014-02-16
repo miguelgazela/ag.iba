@@ -2,6 +2,13 @@
 
 {% block title %}Ag.Iba - Novo cliente{% endblock %}
 
+{% block navbar %}
+<li><a href="{% url 'clients' %}"><i class="fa fa-users"></i> Clientes</a></li>
+<li><a href="{% url 'taxes' %}"><i class="fa fa-list-alt"></i>  Impostos</a></li>
+<li><a href="{% url 'add_client' %}" class="active"><i class="fa fa-plus-square"></i> Novo Cliente</a></li>
+<li><a href="{% url 'add_tax' %}"><i class="fa fa-plus-square"></i> Novo Imposto</a></li>
+{% endblock %}
+
 {% block content %}
 
 <div class="container">

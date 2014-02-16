@@ -33,11 +33,12 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         {% if user.is_authenticated %}
-                        <li><a href="{% url 'clients' %}"><i class="fa fa-users"></i> CLIENTES</a></li>
-                        <li><a href="{% url 'taxes' %}"><i class="fa fa-list-alt"></i>  IMPOSTOS</a></li>
-                        <li><a href="{% url 'add_client' %}"><i class="fa fa-plus-square"></i> NOVO CLIENTE</a></li>
-                        <li><a href="{% url 'add_tax' %}"><i class="fa fa-plus-square"></i> NOVO IMPOSTO</a></li>
-                        {# <li><a href="#">NOVO IMPOSTO</a></li> #}
+                            {% block navbar %}
+                            <li><a href="{% url 'clients' %}"><i class="fa fa-users"></i> Clientes</a></li>
+                            <li><a href="{% url 'taxes' %}"><i class="fa fa-list-alt"></i>  Impostos</a></li>
+                            <li><a href="{% url 'add_client' %}"><i class="fa fa-plus-square"></i> Novo Cliente</a></li>
+                            <li><a href="{% url 'add_tax' %}"><i class="fa fa-plus-square"></i> Novo Imposto</a></li>
+                            {% endblock %}
                         {% endif %}
                     </ul>
 
