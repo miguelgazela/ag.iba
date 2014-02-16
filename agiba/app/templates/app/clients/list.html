@@ -54,7 +54,7 @@
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="{% url 'client' client_id=client.id %}"><i class="fa fa-user"></i> Ver Cliente</a></li>
                                         <li><a href="{% url 'add_tax' client_id=client.id %}"><i class="fa fa-plus-square"></i> Adicionar Imposto</a></li>
-                                        <li><a href="#"><i class="fa fa-edit"></i> Editar Info</a></li>
+                                        <li><a href="#" onclick="window.location = '{% url 'edit_client' client_id=client.id %}';"><i class="fa fa-edit"></i> Editar Cliente</a></li>
                                         <li class="divider"></li>
                                         <li><a href="#" onclick="return removeClient('{% url 'remove_client' client_id=client.id %}');"><i class="fa fa-trash-o"></i> Remover Cliente</a></li>
                                     </ul>

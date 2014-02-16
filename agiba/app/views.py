@@ -179,6 +179,23 @@ def client(request, client_id):
 
 
 @login_required
+def edit_client(request, client_id):
+    client = get_object_or_404(Client, pk=client_id)
+
+    if request.method == 'GET':
+        return render(request, 'app/clients/edit.html', {'client':client})
+    elif request.method == 'POST':
+        edit_form = ClientForm(request.POST, instance=client)
+
+        if edit_form.is_valid():
+            edit_form.save()
+            return redirect('client', client_id=client_id)
+        else:
+            return render(request, 'app/clients/edit.html',
+                {'client': client, 'form': edit_form})
+
+
+@login_required
 def add_client(request):
     if request.method == 'GET':
         return render(request, 'app/clients/add.html')

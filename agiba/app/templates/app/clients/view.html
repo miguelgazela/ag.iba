@@ -79,7 +79,7 @@
             </form>
             <hr>
             <div class="btn-group">
-                <button type="button" class="btn btn-default btn-sidebar" disabled="disabled">Editar Cliente</button>
+                <button type="button" class="btn btn-default btn-sidebar" onclick="window.location = '{% url 'edit_client' client_id=client.id %}';">Editar Cliente</button>
             </div>
             <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle btn-sidebar" data-toggle="dropdown" disabled="disabled">
