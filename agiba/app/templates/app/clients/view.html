@@ -7,7 +7,7 @@
 <div class="container" data-client-id="{{client.id}}">
     <div class="row">
         <div class="col-md-9">
-            <h3><i class="fa fa-user"></i> {{client.name}}</h3>
+            <h3>{% if user.is_superuser and client.from_home %}<i class="fa fa-home"></i>{% elif user.is_superuser %}<i class="fa fa-suitcase"></i>{% endif %} {{client.name}}</h3>
             <h4>NIF/NIPC: {{client.nif}}</h4>
             <address>
                 {{client.address}}

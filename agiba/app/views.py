@@ -188,7 +188,9 @@ def edit_client(request, client_id):
         edit_form = ClientForm(request.POST, instance=client)
 
         if edit_form.is_valid():
-            edit_form.save()
+            client = edit_form.save(commit=False)
+            client.from_home = request.POST.get('client_type') == 'home'
+            client.save()
             return redirect('client', client_id=client_id)
         else:
             return render(request, 'app/clients/edit.html',
