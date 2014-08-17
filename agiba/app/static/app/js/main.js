@@ -1,5 +1,6 @@
 
-var BASE_URL = "http://localhost:8000/agiba/";
+// var BASE_URL = "http://localhost:8000/agiba/";
+var BASE_URL = "http://agiba.herokuapp.com/agiba/";
 
 $(document).ajaxSend(function(event, xhr, settings) {
     function getCookie(name) {
