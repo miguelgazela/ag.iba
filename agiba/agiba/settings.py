@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'app',
     'django_gravatar',
     'gunicorn',
+    'corsheaders',
 )
 
 MIDDLEWARE_CLASSES = (
