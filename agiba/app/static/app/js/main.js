@@ -1,5 +1,4 @@
 
-// var BASE_URL = "http://localhost:8000/agiba/";
 var BASE_URL = "http://agiba.herokuapp.com/agiba/";
 
 $(document).ajaxSend(function(event, xhr, settings) {
@@ -41,7 +40,7 @@ $(document).ajaxSend(function(event, xhr, settings) {
 
 $(document).ready(function() {
 
-    
+
 });
 
 // // search user input handler
@@ -195,4 +194,3 @@ function removeTax(url, nextUrl) {
         alert("Ooops, alguma coisa correu mal. Tenta outra vez mais tarde.");
     });
 }
-
