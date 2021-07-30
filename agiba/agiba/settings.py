@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'app',
     'django_gravatar',
     'gunicorn',
+    'corsheaders',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -51,12 +52,14 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 )
 
 ROOT_URLCONF = 'agiba.urls'
 
 WSGI_APPLICATION = 'agiba.wsgi.application'
 
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
