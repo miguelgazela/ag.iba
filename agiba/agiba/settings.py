@@ -127,6 +127,6 @@ STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    'agiba/app/static/'
+    'agiba/app/static/',
     # os.path.join(BASE_DIR, 'static'),
 )
