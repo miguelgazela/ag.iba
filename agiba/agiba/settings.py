@@ -42,7 +42,6 @@ INSTALLED_APPS = (
     'app',
     'django_gravatar',
     'gunicorn',
-    'corsheaders',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,7 +51,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 )
 
 ROOT_URLCONF = 'agiba.urls'
